@@ -12,7 +12,7 @@ class IndexComponent extends Component {
     render() {
         return (
             <div>
-                1111111111111111111
+                1111111111111111111222222222222222222222222222222222222222
             </div>
         )
     }

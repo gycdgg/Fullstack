@@ -1,21 +1,28 @@
 
 .header
-  flex:1
+  flex:0 0 auto
+  display: flex
+  align-items: center
+  justify-content: flex-end
   height: $headerHeight
   line-height: $headerHeight
   width: 100%
   &__logo
-    float:right
-    
+    &__logo
+      width: 30px
+      height:30px
 
 .footer
-  flex:1
+  display: flex
+  flex:0 0 50px
   height: 257px
   width: 100%
-  &__rights
-    text-align: center
+  justify-content: center
+  align-items: center
+
 
 .body
+  background-color: #f0f2f5
   display: flex
   min-height: 100vh
   flex-direction: column
@@ -23,9 +30,12 @@
     display: flex
     flex:1
     &__sider
-      flex: 1
+      flex: 0 0 30px
     &__children
-      flex: 0 0 12em
+      margin: 24px 16px 0
+      flex: 1
+      padding: 24px
+      background: #ffffff
 
 
 

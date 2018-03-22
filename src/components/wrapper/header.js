@@ -21,7 +21,6 @@ class Header extends Component {
 
         return (
             <header className={styles.header}>
-                <div className="iota-container">
                     <div className={styles.header__logo}>
                         <img src={logoUrl} alt="Edmond" className={styles.header__logo__logo}/>
                     </div>
@@ -33,7 +32,6 @@ class Header extends Component {
                             登录
                         </a>
                     </div>
-                </div>
             </header>
         )
     }

@@ -23,7 +23,7 @@ export default class Sider extends React.Component {
         mode="inline"
         openKeys={this.state.openKeys}
         onOpenChange={this.onOpenChange}
-        style={{ width: 200, float: "left", display: "table" }}
+        style={{ flex: "0 0 200px" }}
       >
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
           <Menu.Item key="1">Option 1</Menu.Item>
