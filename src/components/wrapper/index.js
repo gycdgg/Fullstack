@@ -12,7 +12,7 @@ class Wrapper extends Component {
     render() {
         return (
             <div id="react-root" className = {styles.body}>
-                <Header href = {this.props.location.pathname}/>
+                <Header/>
                 <div className = {styles.body__content}>
                     <Sider />
                     <div className = {styles.body__content__children}>

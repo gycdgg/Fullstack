@@ -11,7 +11,7 @@ class Footer extends Component {
         return (
             <footer className={styles.footer}>
                 <div className = {styles.footer__rights}>
-                    All rights reserved
+                    All rights reserved @ Edmond Guan
                 </div>
             </footer>
         )

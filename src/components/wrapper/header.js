@@ -1,39 +1,61 @@
-/**
- * Created by kadven on 2017/1/24.
- */
 import React,{Component} from 'react';
-import {Link,IndexLink,withRouter} from 'react-router';
-import {Menu} from 'antd';
-import config from '../../../config';
+import { Link,IndexLink,withRouter } from 'react-router';
+import { Menu, Button, Modal } from 'antd';
 import logoUrl from '../../assets/img/logo.png';
-import nameUrl from '../../assets/img/company-name.png';
 import styles from './styles.styl';
+import  LoginContent  from './login'
 const Item = Menu.Item;
-const redirect = config.redirect;
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectKey : [this.props.href]
+            isVisible: false
         }
     }
+    showModal = (type) => {
+        this.setState({ 
+            isVisible: true,
+            title: type === 'login' ? '登陆' : '注册'
+         })
+    }
+    handleCancel = () => {
+        this.setState({
+            isVisible: false
+        })
+    }
+    handleOk = (e) => {
+        e.preventDefault();
+        this._ref.validateFields((err, values) => {
+          if (!err) {
+            console.log('Received values of form: ', values);
+            this.setState({ isVisible: false })
+          }
+        });
+    }
     render() {
-
+        let { isVisible,title } = this.state
         return (
             <header className={styles.header}>
                     <div className={styles.header__logo}>
                         <img src={logoUrl} alt="Edmond" className={styles.header__logo__logo}/>
+                        <span className = {styles.header__logo__text}>主要靠脸吃饭，偶尔写几行代码</span>
                     </div>
                     <div className={styles.header__login}>
-                        <a className={styles.regisiterBtn} href={redirect.signup}>
+                        <Button type = 'primary' onClick={()=>this.showModal('sign')}>
                             注册
-                        </a>
-                        <a className={styles.loginBtn} href={redirect.signin}>
+                        </Button>
+                        <Button type = 'primary' onClick = {() => this.showModal('login')}>
                             登录
-                        </a>
+                        </Button>
+                        <Modal title={ title }
+                            visible={ isVisible }
+                            onOk={ this.handleOk }
+                            onCancel={ this.handleCancel }>
+                            <LoginContent ref = { (value) => this._ref = value}/>
+                        </Modal>
                     </div>
             </header>
         )
     }
 }
-export default withRouter(Header);
+export default Header;

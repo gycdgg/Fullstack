@@ -11,7 +11,6 @@ class Error extends Component {
 
     render() {
         return <div className={styles.bg}>
-            <div className={styles.bg__head}></div>
             <div className={styles.bg__content}>
                 <img src={this.props.imgUrl} alt={this.altText}/>
                 <p className={styles.bg__content__errorMsg}>{this.props.errorMsg}</p>
