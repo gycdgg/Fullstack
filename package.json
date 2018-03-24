@@ -41,6 +41,7 @@
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "babel-core": "^6.10.4",
+    "babel-eslint": "^8.2.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-antd": "^0.5.1",
     "babel-plugin-import": "^1.1.0",
