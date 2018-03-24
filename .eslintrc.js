@@ -27,6 +27,7 @@ module.exports = {
   "rules": {
     "no-const-assign":2,// 禁止修改 const 声明的变量
     "no-undef":0,
+    "array-bracket-spacing": [2,"never"],
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
