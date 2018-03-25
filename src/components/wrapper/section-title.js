@@ -1,8 +1,5 @@
-/**
- * Created by kadven on 2017/2/7.
- */
-import React,{Component} from 'react';
-import styles from './styles.styl';
+import React,{Component} from 'react'
+import styles from './styles.styl'
 class SectionTitle extends Component {
     render() {
         const {title,titleEng} = this.props;

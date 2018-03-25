@@ -1,7 +1,6 @@
-import { Menu, Icon } from 'antd';
-import React from 'react';
-const SubMenu = Menu.SubMenu;
-import styles from './styles.styl'
+import { Menu, Icon } from 'antd'
+import React from 'react'
+const SubMenu = Menu.SubMenu
 export default class Sider extends React.Component {
   rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
   state = {
@@ -10,11 +9,11 @@ export default class Sider extends React.Component {
   onOpenChange = (openKeys) => {
     const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
     if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      this.setState({ openKeys });
+      this.setState({ openKeys })
     } else {
       this.setState({
         openKeys: latestOpenKey ? [latestOpenKey] : [],
-      });
+      })
     }
   }
   render() {
@@ -23,7 +22,7 @@ export default class Sider extends React.Component {
         mode="inline"
         openKeys={this.state.openKeys}
         onOpenChange={this.onOpenChange}
-        style={{ flex: "0 0 200px" }}
+        style={{ flex: '0 0 200px' }}
       >
         <SubMenu key="sub1" title={<span><Icon type="mail" /><span>Navigation One</span></span>}>
           <Menu.Item key="1">Option 1</Menu.Item>
@@ -52,6 +51,6 @@ export default class Sider extends React.Component {
         <Menu.Item key="16">Option 12</Menu.Item>
       </SubMenu>
       </Menu>
-    );
+    )
   }
 }

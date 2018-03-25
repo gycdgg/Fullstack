@@ -23,9 +23,8 @@ class Header extends Component {
   }
   handleOk = (e) => {
     e.preventDefault()
-    this._ref.validateFields((err, values) => {
+    this._ref.validateFields((err) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         this.setState({ isVisible: false })
       }
     })
