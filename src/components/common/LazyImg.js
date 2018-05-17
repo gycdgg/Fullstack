@@ -6,6 +6,10 @@ class LazyImg extends React.Component {
     super(props)
   }
   componentDidMount(){
+    console.log('111111', this.img)
+    document.addEventListener('scroll', function(){
+      console.log(this.img.offsetTop,this.img.offsetHeight, window.scrollY)
+    }.bind(this))
   }
   render(){
     return <img src = {this.props.src}  alt = {this.props.alt} ref = {(value)=> this.img = value}/>

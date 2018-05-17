@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "antd": "^3.3.3",
+    "babel-helper-function-name": "^6.24.1",
     "classnames": "^2.2.5",
     "rc-banner-anim": "^0.5.5",
     "rc-tween-one": "^1.0.0",

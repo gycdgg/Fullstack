@@ -1,0 +1,21 @@
+.navi
+    height: 100px
+    width: 50px
+    background-color: red
+    position: absolute
+    z-index: 1000
+    &__hidden
+        z-index: 10000
+        width: 200px
+        padding: 20px
+        top: 100px
+        position: absolute
+        max-height: 300px
+        line-height: 1rem
+        background-color: blue
+        animation: pull 1s
+        @keyframes pull
+        {
+            0%      {top: 0}
+            100%    {top:100px}
+        }

@@ -59,7 +59,7 @@ const config = {
   ],
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new HtmlWebpackPlugin({title: 'Full stack demo', inject: 'body', template: 'src/templates/test.html', favicon: 'src/assets/favicon.png'}),
+    new HtmlWebpackPlugin({title: 'test title', inject: 'body', template: 'src/templates/test.html', favicon: 'src/assets/favicon.png'}),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, '..'),
       manifest: require('../dist/vendor-manifest.json')

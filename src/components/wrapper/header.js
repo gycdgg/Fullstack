@@ -3,6 +3,7 @@ import { Button, Modal } from 'antd'
 import logoUrl from '../../assets/img/logo.png'
 import styles from './styles.styl'
 import LoginContent from './login'
+import { Navi } from "../common"
 class Header extends Component {
   constructor(props) {
     super(props)
@@ -33,6 +34,7 @@ class Header extends Component {
     let { isVisible, title } = this.state
     return (
       <header className={styles.header}>
+        <Navi/>
         <div className={styles.header__logo}>
           <img src={logoUrl} alt="Edmond" className={styles.header__logo__logo} />
           <span className={styles.header__logo__text}>主要靠脸吃饭，偶尔写几行代码</span>
