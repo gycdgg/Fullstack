@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.styl'
 class Navi extends React.Component {
   constructor(props) {
@@ -53,6 +54,10 @@ class Navi extends React.Component {
         : null}
     </div>
   }
+}
+Navi.propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired
 }
 
 export default Navi
