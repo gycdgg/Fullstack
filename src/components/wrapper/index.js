@@ -14,7 +14,6 @@ class Wrapper extends Component {
             <div id="react-root" className = {styles.body}>
                 <Header/>
                 <div className = {styles.body__content}>
-                    <Sider />
                     <div className = {styles.body__content__children}>
                         {this.props.children}
                     </div>

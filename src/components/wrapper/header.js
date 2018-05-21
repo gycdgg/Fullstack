@@ -1,57 +1,39 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'antd'
-import logoUrl from '../../assets/img/logo.png'
+import { Button, Modal, Select, Input } from 'antd'
+import logoUrl from '../../assets/img/logo1.png'
 import styles from './styles.styl'
 import LoginContent from './login'
 import { Navi } from "../common"
+
+const Search = Input.Search
 class Header extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isVisible: false
-    }
-  }
-  showModal = (type) => {
-    this.setState({
-      isVisible: true,
-      title: type === 'login' ? '登陆' : '注册'
-    })
-  }
-  handleCancel = () => {
-    this.setState({
-      isVisible: false
-    })
-  }
-  handleOk = (e) => {
-    e.preventDefault()
-    this._ref.validateFields((err) => {
-      if (!err) {
-        this.setState({ isVisible: false })
-      }
-    })
   }
   render() {
-    let { isVisible, title } = this.state
     return (
-      <header className={styles.header}>
-        <Navi/>
-        <div className={styles.header__logo}>
-          <img src={logoUrl} alt="Edmond" className={styles.header__logo__logo} />
-          <span className={styles.header__logo__text}>主要靠脸吃饭，偶尔写几行代码</span>
+      <header className = {styles.header}>
+        <div className = {styles.header__logo}>
+          <img src = {logoUrl}/>
         </div>
-        <div className={styles.header__login}>
-          <Button type='primary' style={{ marginRight: 10 }} onClick={() => this.showModal('sign')}>
-            注册
-                        </Button>
-          <Button type='primary' onClick={() => this.showModal('login')}>
-            登录
-                        </Button>
-          <Modal title={title}
-            visible={isVisible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}>
-            <LoginContent ref={(value) => this._ref = value} />
-          </Modal>
+        <div className = {styles.header__menu}>
+          <Navi content = "PRODUCTS"/>
+          <Navi content = "MARKETS"/>
+          <Navi content = "SUPPORT"/>
+          <Navi content = "ABOUT US"/>
+          <Navi content = "CONTACT US"/>
+        </div>
+        <div className = {styles.header__right}>
+        <Select defaultValue="English" size = "small" style = {{display: "block", width: 120, marginBottom: 10}}>
+        <Option value="zh_CN">zh_CN</Option>
+            <Option value="English">English</Option>
+          </Select>
+          <Search
+          placeholder="search ..."
+          size = "small"
+          onSearch={value => console.log(value)}
+          style = {{display: "block", width: 120}}
+          />
         </div>
       </header>
     )

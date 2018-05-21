@@ -4,6 +4,7 @@ class Navi extends React.Component{
     constructor(props){
         super(props)
         this.state = {
+            style:{},
             show: false
         }
         this.data = ['aaaaaaaaaaaa','bbbbbbbbbb','cccccccccccc','aaaaaaaaaaaa','bbbbbbbbbb','cccccccccccc','aaaaaaaaaaaa','bbbbbbbbbb','cccccccccccc']
@@ -12,6 +13,7 @@ class Navi extends React.Component{
     handleEnter = (e) => {
         e.stopPropagation()
         this.setState({
+            style:{backgroundColor:"red"},
             show: true
         })
     }
@@ -19,12 +21,14 @@ class Navi extends React.Component{
     handleLeave = (e) => {
         e.stopPropagation()
         this.setState({
+            style:{},
             show: false
         })
     }
     render(){
         const { content } =  this.props
         return <div className = {styles.navi} onMouseEnter = { this.handleEnter } onMouseLeave ={ this.handleLeave }>
+            <div className = {styles.navi__content} style = {this.state.style}>{content}</div>
             { this.state.show ? <div className = {styles.navi__hidden}>
                 { this.data.map((v,i)=>{
                     return <div>{v}</div>
