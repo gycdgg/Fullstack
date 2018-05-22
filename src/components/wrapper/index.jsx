@@ -1,6 +1,6 @@
 import React ,{Component} from 'react'
-import Header from './header'
-import Footer from './footer'
+import Header from './Header'
+import Footer from './Footer'
 import 'antd/dist/antd.less'
 import styles from './styles.styl'
 class Wrapper extends Component {
