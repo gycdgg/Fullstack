@@ -73,7 +73,11 @@ const config = {
     extensions: [
       '', '.js', '.jsx'
     ],
-    alias: {}
+    alias: {
+      "imgs": path.resolve(
+        __dirname,"../src/assets/img/index"
+      )
+    }
   }
 }
 
