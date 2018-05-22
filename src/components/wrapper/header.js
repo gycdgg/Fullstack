@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Button, Modal, Select, Input } from 'antd'
 import logoUrl from '../../assets/img/logo1.png'
 import styles from './styles.styl'
-import LoginContent from './login'
 import { Navi } from "../common"
 
 const Search = Input.Search

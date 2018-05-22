@@ -11,6 +11,7 @@ import menuHover from './menuhover.png'
 import notfound from './notfound.png';
 import serverError from './serverError.png';
 import gatewayError from './gatewayError.png';
+import product1 from './product1.jpg'
 const numImg = {};
 numImg.num_01 = num_01;
 numImg.num_02 = num_02;
@@ -25,5 +26,6 @@ export {
     rope,
     notfound,
     serverError,
-    gatewayError
+    gatewayError,
+    product1
 }

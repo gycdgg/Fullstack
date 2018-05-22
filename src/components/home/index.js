@@ -1,20 +1,24 @@
 /**
  * Created by kadven on 2017/1/23.
  */
-import React,{Component} from 'react';
+import React, {
+  Component
+} from 'react';
 import styles from './styles.styl';
-
+import Banner from './banner'
 class IndexComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>
-                1111111111111111111222222222222222222222222222222222222222
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className = {styles.home}>
+        <div className = {styles.home__banner}>
+          <Banner />
+        </div>
+      </div>
+    )
+  }
 }
 export default IndexComponent;
