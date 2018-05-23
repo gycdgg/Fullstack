@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './styles.styl'
+import Application from './Application'
 import Banner from './Banner'
 import Pics from './Pics'
 class IndexComponent extends Component {
@@ -14,7 +15,14 @@ class IndexComponent extends Component {
           <Banner />
         </div>
         <div className = {styles.home__pics}>
+          <p className = {styles.home__pics__products}>PRODUCT CENTER</p>
+          <div className = {styles.line}></div>
           <Pics/>
+        </div>
+          <div className = {styles.home__apps}>
+          <p className = {styles.home__apps__app}>APPLICATIONS</p>
+          <div className = {styles.line}></div>
+          <Application/>
         </div>
       </div>
     )

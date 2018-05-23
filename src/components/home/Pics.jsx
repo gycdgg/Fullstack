@@ -16,7 +16,7 @@ class Pics extends React.Component{
         console.log(imgsArr)
         return <div className = {styles.pic}>
             {
-                imgsArr.map((v,i)=> <div className = {styles.pic__item} key = {i} ><img src = {imgsArr[1]} key = {i}/><div className = {styles.pic__item__button}>Learn more</div></div>)
+                imgsArr.map((v,i)=> <div className = {styles.pic__item} key = {i} ><img src = {imgsArr[1]} key = {i}/><div className = {styles.button}>Learn more</div></div>)
             }
             
         </div>
