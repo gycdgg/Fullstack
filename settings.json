@@ -1,0 +1,26 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.tabSize": 2,
+    "typescript.check.npmIsInstalled": false,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "workbench.colorCustomizations": {
+      "editorCursor.foreground": "#fff",
+      "sideBar.background": "#010b1e",
+      "editor.selectionBackground": "#493200",
+      "editor.selectionHighlightBackground": "#666",
+      "editorBracketMatch.background": "#00ef",
+      "editor.lineHighlightBackground": "#444"
+    },
+    "git.confirmSync": false,
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/build": true,
+      "**/bin": true,
+      "**/target": true
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "compilerOptions": {
+      "experimentalDecorators": true
+    }
+  }
