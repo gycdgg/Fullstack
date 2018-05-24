@@ -1,6 +1,8 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import styles from './styles.styl'
+
 class Navi extends React.Component {
   constructor(props) {
     super(props)
@@ -30,7 +32,10 @@ class Navi extends React.Component {
       show: true
     })
   }
-
+  handleClick = () => {
+    console.log(this.props)
+    this.props.router.push('products')
+  }
   handleLeave = (e) => {
     e.stopPropagation()
     this.setState({style: {}, show: false})
@@ -38,10 +43,11 @@ class Navi extends React.Component {
   render() {
     const {content} = this.props
     return <div
+      onClick = {this.handleClick}
       className={styles.navi}
       onMouseEnter={this.handleEnter}
-      onMouseLeave
-      ={this.handleLeave}>
+      onClick = {this.handleClick}
+      onMouseLeave = {this.handleLeave}>
       <div className={styles.navi__content} style={this.state.style}>{content}</div>
       {this.state.show
         ? <div className={styles.navi__hidden}>
@@ -60,4 +66,4 @@ Navi.propTypes = {
   content: PropTypes.string.isRequired
 }
 
-export default Navi
+export default withRouter(Navi)

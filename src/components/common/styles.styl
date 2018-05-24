@@ -24,8 +24,13 @@
         //     0%      {height : 0}
         //     100%    {height :auto}
         // }
-
-.container
+.menu
+  display: flex
+  flex-direction: column
+  &__header
+    flex: 0 0 1rem
+  &__container
+    width: 100% 
     display: flex
     &__navi
         flex: 0 0 10rem
