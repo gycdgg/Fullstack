@@ -1,7 +1,7 @@
 {
   "name": "fullstack",
   "version": "1.0.0",
-  "description": "A full stack demo written by React Redux Node stylus ",
+  "description": "A full stack project written by React Redux Node stylus ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
