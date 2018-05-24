@@ -3,6 +3,7 @@ import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import styles from './styles.styl'
 
+@withRouter
 class Navi extends React.Component {
   constructor(props) {
     super(props)
@@ -66,4 +67,4 @@ Navi.propTypes = {
   content: PropTypes.string.isRequired
 }
 
-export default withRouter(Navi)
+export default Navi

@@ -21,7 +21,11 @@ const config = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015','react','stage-1'],
+          plugins: ['transform-decorators-legacy','transform-decorators']
+        }
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
@@ -71,7 +75,7 @@ const config = {
   ],
   resolve: {
     extensions: [
-      '', '.js', '.jsx'
+      '', '.js', '.jsx', '.styl'
     ],
     alias: {
       "imgs": path.resolve(
