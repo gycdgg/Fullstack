@@ -1,5 +1,6 @@
 import React from 'react'
-import { Menu, Icon } from 'antd'
+import { Menu, Icon, Breadcrumb } from 'antd'
+import { withRouter,Link } from 'react-router'
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
 import styles from './styles.styl'
@@ -10,9 +11,15 @@ class MenuList extends React.Component{
   handleClick = (e) => {
     console.log('click ', e);
   }
+  itemRender = (route,params,routes,paths) => {
+    const last = routes.indexOf(route) === routes.length - 1;
+    return last ? <span>{route.breadcrumbName}</span> : <Link to={paths.join('/')}>{route.breadcrumbName}</Link>;
+  }
   render(){
+    // get routes and params from father component
+    const { routes,params } = this.props
     return <div className = {styles.menu}>
-      <div className = {styles.menu__header}>header</div>
+      <div className = {styles.menu__header}><Breadcrumb itemRender = {this.itemRender} routes = {routes}/></div>
       <div className = {styles.menu__container}>
         <div className = {styles.menu__container__navi}>
         <Menu

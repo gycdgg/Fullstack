@@ -34,7 +34,6 @@ class Navi extends React.Component {
     })
   }
   handleClick = () => {
-    console.log(this.props)
     this.props.router.push('products')
   }
   handleLeave = (e) => {

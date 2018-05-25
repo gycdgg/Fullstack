@@ -7,7 +7,8 @@ class ProductWrapper extends React.Component{
   }
 
   render(){
-    return <Menu navi = "112312123">
+    console.log('props', this.props)
+    return <Menu navi = "112312123" routes = {this.props.routes} params = {this.props.params}>
       {this.props.children}
     </Menu>
   }
