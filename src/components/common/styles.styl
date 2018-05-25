@@ -30,13 +30,24 @@
   flex-direction: column
   &__header
     display: flex
-    flex: 0 0 1rem
+    flex: 0 0 3rem
     .icon
         line-height: 1.5
   &__container
     width: 100% 
     display: flex
     &__navi
+        display: flex
+        flex-direction: column
         flex: 0 0 10rem
+        &__title
+            background-color: $bannerColor
+            text-align: center
+            line-height: 2rem
+            flex: 0 0 2rem
+        &__content
+            flex: 1
+        .menu
+            width: 256px
     &__content
         flex: 1
