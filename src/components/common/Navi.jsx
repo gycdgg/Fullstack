@@ -63,7 +63,8 @@ class Navi extends React.Component {
 }
 Navi.propTypes = {
   // title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  router: PropTypes.object.isRequired
 }
 
 export default Navi

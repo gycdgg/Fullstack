@@ -47,7 +47,7 @@ const config = {
         loader: 'json-loader'
       }, {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader?{modifyVars:{"@primary-color":"##e50012"}}')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader?{modifyVars:{"@primary-color":"#e50012"}}')
       }
     ]
   },
@@ -96,8 +96,8 @@ const config = {
       '', '.js', '.jsx'
     ],
     alias: {
-      "imgs": path.resolve(
-        __dirname,"../src/assets/img/index"
+      'imgs': path.resolve(
+        __dirname,'../src/assets/img/index'
       )
     }
   }
