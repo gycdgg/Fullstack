@@ -63,7 +63,7 @@ const config = {
   ],
   plugins: [
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new HtmlWebpackPlugin({title: 'Edmond Fullstack demo', inject: 'body', template: 'src/templates/index.html', favicon: 'src/assets/favicon.png'}),
+    new HtmlWebpackPlugin({title: 'this is a test title', inject: 'body', template: 'src/templates/index.html', favicon: 'src/assets/favicon.png'}),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, '..'),
       manifest: require('../dist/vendor-manifest.json')
