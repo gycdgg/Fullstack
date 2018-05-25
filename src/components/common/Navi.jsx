@@ -62,7 +62,7 @@ class Navi extends React.Component {
   }
 }
 Navi.propTypes = {
-  title: PropTypes.string.isRequired,
+  // title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired
 }
 

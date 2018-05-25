@@ -2,7 +2,6 @@ import React from 'react'
 import { Route,IndexRoute } from 'react-router'
 import { Wrapper,Index,ProductWrapper,ProductList } from './components'
 import { NotFound } from './components/error_page'
-import { Breadcrumb } from 'antd'
 let childRoutes =
     <Route name = "home" breadcrumbName = "Home" path="/" component={ Wrapper }>
         <IndexRoute component={ Index }/>

@@ -19,7 +19,10 @@ class MenuList extends React.Component{
     // get routes and params from father component
     const { routes,params } = this.props
     return <div className = {styles.menu}>
-      <div className = {styles.menu__header}><Breadcrumb itemRender = {this.itemRender} routes = {routes}/></div>
+      <div className = {styles.menu__header}> 
+        <Icon className = {styles.icon} type="home" />
+        <Breadcrumb itemRender = {this.itemRender} routes = {routes} separator = ">"/>
+      </div>
       <div className = {styles.menu__container}>
         <div className = {styles.menu__container__navi}>
         <Menu
