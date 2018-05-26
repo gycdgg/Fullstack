@@ -28,8 +28,8 @@ class MenuList extends React.Component{
   naviRender = (navi) => {
     return navi.map((v,i) => {
       if(Array.isArray(v)){
-        return <SubMenu key = {v+i} title = {v.shift(1)}>
-          {this.naviRender(v)}
+        return <SubMenu key = {v+i} title = {v[0]}>
+          {this.naviRender(v.slice(1))}
         </SubMenu>
       } else {
         return <Menu.Item key = {v+i} className = {styles.item}>{v}</Menu.Item>

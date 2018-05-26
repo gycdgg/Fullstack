@@ -78,8 +78,8 @@ const config = {
       '', '.js', '.jsx', '.styl'
     ],
     alias: {
-      "imgs": path.resolve(
-        __dirname,"../src/assets/img/index"
+      'imgs': path.resolve(
+        __dirname,'../src/assets/img/index'
       )
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.styl'
-import {Menu} from '../common'
+import { Menu } from '../common'
 /**
  * mock data
  * products list
@@ -24,7 +24,6 @@ class ProductWrapper extends React.Component{
   }
 
   render(){
-    console.log('props', this.props)
     return <Menu navi = {mockNavi} {...this.props} params = {this.props.params} title = {title} >
       {this.props.children}
     </Menu>
