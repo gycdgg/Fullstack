@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import styles from './styles'
 import { Card } from 'antd'
 import { product1 } from 'imgs'
