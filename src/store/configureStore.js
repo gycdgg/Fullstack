@@ -1,7 +1,3 @@
-/**
- * Created by kadven on 2017/1/23.
- */
-
 import {createStore,applyMiddleware,compose} from 'redux';
 import thunk from 'redux-thunk';
 import {routerMiddleware} from 'react-router-redux';
