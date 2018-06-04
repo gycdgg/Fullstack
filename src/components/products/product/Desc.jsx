@@ -7,7 +7,7 @@ class Desc extends React.Component{
   }
   render(){
     return <div className = {styles.desc}>
-      <div className = {styles.desc__title}>product title</div>
+      <h3 className = {styles.desc__title}>product title</h3>
       <div className  = {styles.desc__content}>
         <div className = {styles.desc__content__pic}></div>
         <div className = {styles.desc__content__text}>
@@ -20,3 +20,5 @@ class Desc extends React.Component{
     </div>
   }
 }
+
+export default Desc
