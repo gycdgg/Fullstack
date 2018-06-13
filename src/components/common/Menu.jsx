@@ -16,11 +16,6 @@ class MenuList extends React.Component{
     console.log('click ', e);
   }
 
-  itemRender = (route,params,routes,paths) => {
-    const last = routes.indexOf(route) === routes.length - 1;
-    return last ? <span>{route.breadcrumbName}</span> : <Link to={paths.join('/')}>{route.breadcrumbName}</Link>;
-  }
-
   /**
    * @argument: navi is a array
    * map navi and render it logically
@@ -42,10 +37,6 @@ class MenuList extends React.Component{
     // get props from father component
     const { routes,title,navi } = this.props
     return <div className = {styles.menu}>
-      <div className = {styles.menu__header}> 
-        <Icon className = {styles.icon} type="home" />
-        <Breadcrumb itemRender = {this.itemRender} routes = {routes} separator = ">"/>
-      </div>
       <div className = {styles.menu__container}>
         <div className = {styles.menu__container__navi}>
           <div className = { styles.menu__container__navi__title}>{title}</div>
