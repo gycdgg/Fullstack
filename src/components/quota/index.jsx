@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.styl'
-import { Form, Select, Input, Button, Col, Row } from 'antd'
+import { Form, Select, Input, Button, Col, Row, Icon, Upload } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
 @Form.create()
@@ -122,12 +122,24 @@ class Quota extends React.Component{
           </FormItem>
         </Col>
       </Row>
-          <FormItem
-          >
-            <Button type="primary" htmlType="submit">
-              Submit
+      <FormItem
+      label="Upload">
+        {getFieldDecorator('upload', {
+          valuePropName: 'fileList',
+          getValueFromEvent: this.normFile,
+        })(
+          <Upload name="logo" action="/upload.do">
+            <Button>
+              <Icon type="upload" /> Click to upload
             </Button>
-          </FormItem>
+          </Upload>
+        )}
+      </FormItem>
+      <FormItem>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </FormItem>
       </Form>
       </div>
     </div>
