@@ -48,6 +48,7 @@ class MenuList extends React.Component{
             mode="inline">
             { this.naviRender(navi) }
           </Menu>
+          <div className = { styles.menu__container__navi__title}></div>
         </div>
         <div className = {styles.menu__container__content}>
           { this.props.children }
