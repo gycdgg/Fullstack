@@ -4,7 +4,7 @@ import { Form, Select, Input, Button, Col, Row, Icon, Upload } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
 @Form.create()
-class Quota extends React.Component{
+class Quote extends React.Component{
   constructor(props){
     super(props)
   }
@@ -26,7 +26,7 @@ class Quota extends React.Component{
   render(){
     const { getFieldDecorator } = this.props.form
     return <div className = {styles.quota}>
-      <header className = {styles.quota__header}>Get a Quick Quota</header>
+      <header className = {styles.quota__header}>Get a Quick Quote</header>
       <p className = {styles.quota__text}>You can contact Ingellen Live Chat at the top-right corner to get real-time answers to your questions, or email Ingellen Technical Support where most issues are resolved within 24 hours.</p>
       <div className = {styles.quota__forms}>
         <Form onSubmit={this.handleSubmit}>
@@ -160,4 +160,4 @@ class Quota extends React.Component{
   }
 }
 
-export default Quota
+export default Quote

@@ -1,7 +1,7 @@
 
 import Wrapper from './wrapper'
 import Index from './home'
-import Quota from './quota'
+import Quote from './quote'
 import ProductWrapper from "./products/Wrapper"
 import ProductList from './products/List'
 import Product from './products/product'
@@ -10,6 +10,6 @@ export {
     Index,
     ProductWrapper,
     ProductList,
-    Quota,
+    Quote,
     Product
 }
