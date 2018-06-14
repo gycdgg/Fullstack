@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'antd'
 import { product1 } from 'imgs'
 import styles from './styles.styl'
 /**
@@ -8,18 +7,18 @@ import styles from './styles.styl'
  */
 const imgsArr = new Array(8).fill(product1)
 class Pics extends React.Component{
-    constructor(props){
-        super(props)
-    }
+  constructor(props){
+    super(props)
+  }
 
-    render(){
-        return <div className = {styles.pic}>
+  render(){
+    return <div className = {styles.pic}>
             {
                 imgsArr.map((v,i)=> <div className = {styles.pic__item} key = {i} ><img src = {imgsArr[1]} key = {i}/><div className = {styles.button}>Learn more</div></div>)
             }
             
         </div>
-    }
+  }
 }
 
 export default Pics

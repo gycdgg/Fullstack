@@ -8,7 +8,6 @@ class Quota extends React.Component{
   constructor(props){
     super(props)
   }
-
   render(){
     const { getFieldDecorator } = this.props.form
     return <div className = {styles.quota}>
@@ -145,5 +144,6 @@ class Quota extends React.Component{
     </div>
   }
 }
+
 
 export default Quota

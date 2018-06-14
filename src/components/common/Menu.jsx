@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Menu, Icon, Breadcrumb } from 'antd'
-import { withRouter,Link } from 'react-router'
+import { Menu } from 'antd'
 import styles from './styles.styl'
 const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
 
 class MenuList extends React.Component{
 
@@ -13,7 +11,7 @@ class MenuList extends React.Component{
   }
 
   handleClick = (e) => {
-    console.log('click ', e);
+    console.log('click ', e)
   }
 
   /**
