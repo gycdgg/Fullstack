@@ -5,7 +5,13 @@ import styles from './styles.styl'
 const SubMenu = Menu.SubMenu
 
 class MenuList extends React.Component{
-
+  static propTypes = {
+    props: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.element.isRequired,
+    navi: PropTypes.array.isRequired,
+    routes: this.propTypes.object.isRequired
+  }
   constructor(props){
     super(props)
   }
@@ -53,13 +59,6 @@ class MenuList extends React.Component{
       </div>
     </div>
   }
-}
-
-MenuList.PropTypes = {
-  props: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
-  navi: PropTypes.array.isRequired
 }
 
 export default MenuList

@@ -1,10 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.styl'
 import { Form, Select, Input, Button, Col, Row, Icon, Upload } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
 @Form.create()
 class Quota extends React.Component{
+  static propTypes = {
+    form: PropTypes.object.isRequired
+  }
   constructor(props){
     super(props)
   }
