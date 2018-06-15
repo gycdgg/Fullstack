@@ -93,7 +93,7 @@ const config = {
   ],
   resolve: {
     extensions: [
-      '', '.js', '.jsx'
+      '', '.js', '.jsx','.styl'
     ],
     alias: {
       'imgs': path.resolve(

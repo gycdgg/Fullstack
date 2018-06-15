@@ -1,6 +1,6 @@
 ## Full Stack demo by React and Nodejs
 
-> **FrontEnd: React + Redux + Antd + styles + webpack**
+> **FrontEnd: React + Redux + Antd + stylus + webpack**
 
 > **BackEnd: Node + mysql + redis + sequelize + jwt**
 

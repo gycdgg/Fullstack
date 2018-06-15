@@ -1,19 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Menu, Icon, Breadcrumb } from 'antd'
-import { withRouter,Link } from 'react-router'
+import { Menu } from 'antd'
 import styles from './styles.styl'
 const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
 
 class MenuList extends React.Component{
-
+  static propTypes = {
+    props: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    children: PropTypes.element.isRequired,
+    navi: PropTypes.array.isRequired,
+    routes: this.propTypes.object.isRequired
+  }
   constructor(props){
     super(props)
   }
 
   handleClick = (e) => {
-    console.log('click ', e);
+    console.log('click ', e)
   }
 
   /**
@@ -56,13 +60,6 @@ class MenuList extends React.Component{
       </div>
     </div>
   }
-}
-
-MenuList.PropTypes = {
-  props: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
-  navi: PropTypes.array.isRequired
 }
 
 export default MenuList

@@ -5,7 +5,7 @@ import Banner from './Banner'
 import Pics from './Pics'
 class IndexComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -28,4 +28,4 @@ class IndexComponent extends Component {
     )
   }
 }
-export default IndexComponent;
+export default IndexComponent

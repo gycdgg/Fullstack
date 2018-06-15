@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from './styles.styl'
 import { Form, Select, Input, Button, Col, Row, Icon, Upload } from 'antd'
 const FormItem = Form.Item
