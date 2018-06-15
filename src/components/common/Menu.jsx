@@ -10,7 +10,7 @@ class MenuList extends React.Component{
     title: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
     navi: PropTypes.array.isRequired,
-    routes: this.propTypes.object.isRequired
+    routes: PropTypes.object.isRequired
   }
   constructor(props){
     super(props)
