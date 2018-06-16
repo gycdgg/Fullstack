@@ -3,12 +3,12 @@ import styles from './styles.styl'
 
 
 const config = {
-  type:["Products","Markets","Support","AboutGigalight"],
-  Products:["xWDM & OADM","MTP/MPO Fiber Cables","Optical Transceivers","Active Optical Cables","Fiber Patch Cables","Passive Components"],
-  Markets:["News & Events","Blog Artilces","Videos"],
-  Solutions:["FTTX Solution","FTTX Solution"],
-  Support:["Service","RMA","Download Center","Knowledge Center"],
-  AboutGigalight:["Core Competitiveness","Cloud Ecosystem","Qualification & Certificates","Gigalight Culture","Job Opportunities"]
+  type:['Products','Markets','Support','AboutGigalight'],
+  Products:['xWDM & fOADM','MTP/MPO Fiber Cables','Optical Transceivers','Active Optical Cables','Fiber Patch Cables','Passive Components'],
+  Markets:['News & Events','Blog Artilces','Videos'],
+  Solutions:['FTTX Solution','FTTX Solution'],
+  Support:['Service','RMA','Download Center','Knowledge Center'],
+  AboutGigalight:['Core Competitiveness','Cloud Ecosystem','Qualification & Certificates','Gigalight Culture','Job Opportunities']
 }
 class Footer extends Component {
   constructor(props) {

@@ -39,7 +39,7 @@ class MenuList extends React.Component{
 
   render(){
     // get props from father component
-    const { routes,title,navi } = this.props
+    const { title,navi } = this.props
     return <div className = {styles.menu}>
       <div className = {styles.menu__container}>
         <div className = {styles.menu__container__navi}>
