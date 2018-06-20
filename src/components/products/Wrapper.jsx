@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './styles.styl'
 import { Menu } from '../common'
 /**
  * mock data

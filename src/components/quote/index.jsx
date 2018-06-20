@@ -6,23 +6,26 @@ const FormItem = Form.Item
 const Option = Select.Option
 @Form.create()
 class Quote extends React.Component{
+  static propTypes = {
+    form: PropTypes.object.isRequired,
+  }
   constructor(props){
     super(props)
   }
   handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log('Received values of form: ', values)
       }
-    });
+    })
   }
   normFile = (e) => {
-    console.log('Upload event:', e);
+    console.log('Upload event:', e)
     if (Array.isArray(e)) {
-      return e;
+      return e
     }
-    return e && e.fileList;
+    return e && e.fileList
   }
   render(){
     const { getFieldDecorator } = this.props.form
