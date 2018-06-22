@@ -6,15 +6,15 @@ import styles from './styles.styl'
  * use mock data instead
  */
 const imgsArr = new Array(8).fill(product1)
-class Pics extends React.Component{
-  constructor(props){
+class Pics extends React.Component {
+  constructor(props) {
     super(props)
   }
 
-  render(){
+  render() {
     return <div className = {styles.pic}>
             {
-                imgsArr.map((v,i) => <div className = {styles.pic__item} key = {i} ><img src = {imgsArr[1]} key = {i}/><div className = {styles.button}>Learn more</div></div>)
+                imgsArr.map((v, i) => <div className = {styles.pic__item} key = {i} ><img src = {imgsArr[1]} key = {i}/><div className = {styles.button}>Learn more</div></div>)
             }
             
         </div>

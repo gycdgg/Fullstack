@@ -5,11 +5,11 @@ import { Form, Select, Input, Button, Col, Row, Icon, Upload } from 'antd'
 const FormItem = Form.Item
 const Option = Select.Option
 @Form.create()
-class Quote extends React.Component{
+class Quote extends React.Component {
   static propTypes = {
     form: PropTypes.object.isRequired,
   }
-  constructor(props){
+  constructor(props) {
     super(props)
   }
   handleSubmit = (e) => {
@@ -27,7 +27,7 @@ class Quote extends React.Component{
     }
     return e && e.fileList
   }
-  render(){
+  render() {
     const { getFieldDecorator } = this.props.form
     return <div className = {styles.quota}>
       <header className = {styles.quota__header}>Get a Quick Quote</header>

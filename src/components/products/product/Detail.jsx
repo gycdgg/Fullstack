@@ -29,39 +29,39 @@ const columns = [{
   key: 'address',
 }]
 // these are mock data
-const features = ['Hot-pluggable QSFP-DD form factor','channels full-duplex transceiver module','Hot-pluggable QSFP-DD form factor','channels full-duplex transceiver module','Hot-pluggable QSFP-DD form factor','channels full-duplex transceiver module','Hot-pluggable QSFP-DD form factor','channels full-duplex transceiver module']
-class Detail extends React.Component{
-  constructor(props){
+const features = [ 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module' ]
+class Detail extends React.Component {
+  constructor(props) {
     super(props)
   }
 
-  render(){
+  render() {
     return <div className = {styles.detail}>
       <div className = {styles.detail__features}>
         <div className = {styles.title}>Features</div>
         <ul className = {styles.list}>
-          {features.map((v,i) => <li key = {i}>{v}</li>)}
+          {features.map((v, i) => <li key = {i}>{v}</li>)}
         </ul>
       </div>
       <hr/>
       <div className = {styles.detail__applications}>
         <div className = {styles.title}>applications</div>
         <ul className = {styles.list}>
-          {features.map((v,i) => <li key = {i}>{v}</li>)}
+          {features.map((v, i) => <li key = {i}>{v}</li>)}
         </ul>
       </div>
       <hr/>
       <div className = {styles.detail__package}>
         <div className = {styles.title}>package</div>
         <ul className = {styles.list}>
-          {features.map((v,i) => <li key = {i}>{v}</li>)}
+          {features.map((v, i) => <li key = {i}>{v}</li>)}
         </ul>
       </div>
       <hr/>
       <div className = {styles.detail__workshop}>
         <div className = {styles.title}>The Production workshop show</div>
         {
-          imgArr.map((v,i) => <img src = {v} key = {i}/>)
+          imgArr.map((v, i) => <img src = {v} key = {i}/>)
         }
       </div>
       <hr/>

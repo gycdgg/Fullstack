@@ -3,12 +3,12 @@ import styles from './styles'
 import Desc from './Desc'
 import Detail from './Detail'
 
-class Product extends React.Component{
-  constructor(props){
+class Product extends React.Component {
+  constructor(props) {
     super(props)
   }
 
-  render(){
+  render() {
     return<div className = {styles.product}>
       <Desc/>
       <hr/>

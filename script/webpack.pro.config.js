@@ -23,8 +23,8 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015','react','stage-1'],
-          plugins: ['transform-decorators-legacy','transform-decorators']
+          presets: [ 'es2015', 'react', 'stage-1' ],
+          plugins: [ 'transform-decorators-legacy', 'transform-decorators' ]
         }
       }, {
         test: /\.css$/,
@@ -52,18 +52,18 @@ const config = {
     ]
   },
   stylus: {
-    use: [poststylus(['autoprefixer'])],
-    import: [path.resolve('./src/styles/variables.styl')]
+    use: [ poststylus([ 'autoprefixer' ]) ],
+    import: [ path.resolve('./src/styles/variables.styl') ]
   },
   postcss: [
     valudes,
     autoprefixer({
-      browsers: ['> 5%', 'last 2 versions', 'Firefox ESR']
+      browsers: [ '> 5%', 'last 2 versions', 'Firefox ESR' ]
     })
   ],
   plugins: [
-    new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new HtmlWebpackPlugin({title: 'this is a test title', inject: 'body', template: 'src/templates/index.html', favicon: 'src/assets/favicon.png'}),
+    new webpack.EnvironmentPlugin([ 'NODE_ENV' ]),
+    new HtmlWebpackPlugin({ title: 'this is a test title', inject: 'body', template: 'src/templates/index.html', favicon: 'src/assets/favicon.png' }),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, '..'),
       manifest: require('../dist/vendor-manifest.json')
@@ -71,7 +71,7 @@ const config = {
     new webpack
       .optimize
       .CommonsChunkPlugin('vendors.[hash].js'),
-    new ExtractTextPlugin('styles.[hash].css', {allChunk: true}),
+    new ExtractTextPlugin('styles.[hash].css', { allChunk: true }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -93,11 +93,11 @@ const config = {
   ],
   resolve: {
     extensions: [
-      '', '.js', '.jsx','.styl'
+      '', '.js', '.jsx', '.styl'
     ],
     alias: {
       'imgs': path.resolve(
-        __dirname,'../src/assets/img/index'
+        __dirname, '../src/assets/img/index'
       )
     }
   }

@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './styles'
-import { Button,Icon } from 'antd'
+import { Button, Icon } from 'antd'
 import { product1 } from 'imgs'
-class Desc extends React.Component{
-  constructor(props){
+class Desc extends React.Component {
+  constructor(props) {
     super(props)
   }
-  render(){
+  render() {
     return <div className = {styles.desc}>
       <h3 className = {styles.desc__title}>product title</h3>
       <div className  = {styles.desc__content}>

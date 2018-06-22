@@ -6,7 +6,7 @@ const port = 9091
 config.cache = true
 config.devtool = 'inline-eval-source-map'
 config.plugins.push(
-  new OpenBrowserPlugin({ url: 'http://localhost:'+port })
+  new OpenBrowserPlugin({ url: 'http://localhost:' + port })
 )
 config.devServer = {
   port: port,

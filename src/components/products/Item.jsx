@@ -3,16 +3,16 @@ import PropTypes from 'prop-types'
 import styles from './styles'
 import { Card } from 'antd'
 import { product1 } from 'imgs'
-class Item extends React.Component{
+class Item extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired
   }
-  constructor(props){
+  constructor(props) {
     super(props)
   }
 
-  render(){
+  render() {
     const { title, content } = this.props
     return  <Card title={title} hoverable extra={<a href="#">More</a>} className = { styles.item }>
     <img className = {styles.item__img} src = {product1}/>

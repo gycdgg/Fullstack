@@ -1,4 +1,4 @@
-import {testFunc} from './home';
+import { testFunc } from './home'
 
 export {
     testFunc

@@ -38,10 +38,10 @@ class Navi extends React.Component {
   }
   handleLeave = (e) => {
     e.stopPropagation()
-    this.setState({style: {}, show: false})
+    this.setState({ style: {}, show: false })
   }
   render() {
-    const {content} = this.props
+    const { content } = this.props
     return <div
       onClick = {this.handleClick}
       className={styles.navi}
@@ -63,6 +63,7 @@ class Navi extends React.Component {
 }
 Navi.propTypes = {
   // title: PropTypes.string.isRequired,
+  router: PropTypes.object.isRequired,
   content: PropTypes.string.isRequired
 }
 
