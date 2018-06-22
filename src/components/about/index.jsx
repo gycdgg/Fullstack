@@ -1,12 +1,20 @@
 import React from 'react'
+import { UploadImg } from '../common'
 
-class About extends React.Component{
-  constructor(props){
+class About extends React.Component {
+
+  constructor(props) {
     super(props)
   }
 
-  render(){
-    return <div>about us page</div>
+  componentDidMount() {
+    fetch('/api/admin/session')
+  }
+
+  render() {
+    return <div>
+      <UploadImg len = {3} site = "home"/>
+    </div>
   }
 }
 

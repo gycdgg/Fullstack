@@ -4,7 +4,7 @@ import { Menu } from 'antd'
 import styles from './styles.styl'
 const SubMenu = Menu.SubMenu
 
-class MenuList extends React.Component{
+class MenuList extends React.Component {
   static propTypes = {
     props: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
@@ -12,7 +12,7 @@ class MenuList extends React.Component{
     navi: PropTypes.array.isRequired,
     routes: PropTypes.object.isRequired
   }
-  constructor(props){
+  constructor(props) {
     super(props)
   }
 
@@ -25,21 +25,21 @@ class MenuList extends React.Component{
    * map navi and render it logically
    */
   naviRender = (navi) => {
-    return navi.map((v,i) => {
-      if(Array.isArray(v)){
-        return <SubMenu key = {v+i} title = {v[0]}>
+    return navi.map((v, i) => {
+      if(Array.isArray(v)) {
+        return <SubMenu key = {v + i} title = {v[0]}>
           {this.naviRender(v.slice(1))}
         </SubMenu>
       } else {
-        return <Menu.Item key = {v+i} className = {styles.item}>{v}</Menu.Item>
+        return <Menu.Item key = {v + i} className = {styles.item}>{v}</Menu.Item>
       }
     }
     )
   }
 
-  render(){
+  render() {
     // get props from father component
-    const { title,navi } = this.props
+    const { title, navi } = this.props
     return <div className = {styles.menu}>
       <div className = {styles.menu__container}>
         <div className = {styles.menu__container__navi}>
@@ -47,8 +47,8 @@ class MenuList extends React.Component{
           <Menu
             className = {styles.menu}
             onClick={this.handleClick}
-            defaultSelectedKeys={['5']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={[ '5' ]}
+            defaultOpenKeys={[ 'sub1' ]}
             mode="inline">
             { this.naviRender(navi) }
           </Menu>

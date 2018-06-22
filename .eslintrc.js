@@ -52,6 +52,7 @@ module.exports = {
     "quotes": ["error", "single"],
     "semi": ["error", "never"],
     "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2
+    "react/jsx-uses-vars": 2,
+    "jsx-quotes": [2, "prefer-double"], //强制在JSX属性（jsx-quotes）中一致使用双引号
   }
 };
