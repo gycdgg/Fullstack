@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About, Layout } from './components'
+import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About } from './components'
+import { Login, Layout }from './components/console'
 import { NotFound } from './components/error_page'
 let childRoutes =
     <Route name = "home" breadcrumbName = "Home" path="/" component={ Wrapper }>
@@ -11,8 +12,8 @@ let childRoutes =
         </Route>
         <Route path = "/quote" name = "Get A Quote" breadcrumbName = "Get A Quote" component = {Quote}/>
         <Route path = "/about" name = "About us" breadcrumbName = "About us" component = {About}/>
+        <Route path = "/login" component = { Login }/>
         <Route path = "/console"  component = {Layout}>
-            <Route path = "login" component = { About }/>
         </Route>
         <Route path="*" component={NotFound} />
     </Route>

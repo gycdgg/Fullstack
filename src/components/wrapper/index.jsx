@@ -20,12 +20,13 @@ class Wrapper extends Component {
     return last ? <span>{route.breadcrumbName}</span> : <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
   }
   get isAdmin() {
-    return this.props.location.pathname.includes('console')
+    const { pathname } = this.props.location
+    return pathname.includes('console') || pathname.includes('login')
   }
   render() {
     const { routes, location } = this.props
     return (
-      <div id="react-root">
+      <div id="react-root" className = {styles.root}>
         {this.isAdmin ? this.props.children : <div  className = {styles.body}>
           <Header/>
           <div className = {styles.body__content}>
