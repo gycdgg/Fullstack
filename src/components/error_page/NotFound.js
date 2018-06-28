@@ -11,7 +11,7 @@ class NotFound extends Component {
     return <Error
             imgUrl={notfound}
             altText="not found"
-            errorMsg="很抱歉，您访问的页面不在地球上.../Users/mac/Desktop/code/study/fullstack/dist"
+            errorMsg="很抱歉，您访问的页面不在地球上..."
             btnText="返回首页"
         />
   }

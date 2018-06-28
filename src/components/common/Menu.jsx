@@ -6,11 +6,10 @@ const SubMenu = Menu.SubMenu
 
 class MenuList extends React.Component {
   static propTypes = {
-    props: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
     navi: PropTypes.array.isRequired,
-    routes: PropTypes.object.isRequired
+    routes: PropTypes.array.isRequired
   }
   constructor(props) {
     super(props)

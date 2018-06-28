@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About } from './components'
+import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About, Layout } from './components'
 import { NotFound } from './components/error_page'
 let childRoutes =
     <Route name = "home" breadcrumbName = "Home" path="/" component={ Wrapper }>
@@ -11,6 +11,7 @@ let childRoutes =
         </Route>
         <Route path = "/quote" name = "Get A Quote" breadcrumbName = "Get A Quote" component = {Quote}/>
         <Route path = "/about" name = "About us" breadcrumbName = "About us" component = {About}/>
+        <route path = "/console" name = "Console" breadcrumbName = "Console" component = {Layout}/>
         <Route path="*" component={NotFound} />
     </Route>
 export default (childRoutes)

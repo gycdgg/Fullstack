@@ -4,6 +4,8 @@
 
 > **BackEnd: Node + mysql + redis + sequelize + jwt**
 
+### 项目介绍
+企业站前后端，后台系统的路由为/console
 
 ### 项目运行
 DEV 环境
