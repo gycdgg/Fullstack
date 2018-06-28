@@ -22,6 +22,7 @@ class Login extends React.Component {
     return (
       <div  className={styles.login}>
         <Form onSubmit={this.handleSubmit} className = {styles.login__form}>
+        <h3 className = {styles.login__form__title}>欢迎来到控制中心</h3>
           <FormItem>
             {getFieldDecorator('userName', {
               rules: [{ required: true, message: 'Please input your username!' }],
