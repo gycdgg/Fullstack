@@ -6,7 +6,7 @@ import ProductWrapper from './products/Wrapper'
 import ProductList from './products/List'
 import Product from './products/product'
 import About from './about'
-import Layout from './console/layout'
+import Layout from './console/Layout'
 export {
     Wrapper,
     Index,

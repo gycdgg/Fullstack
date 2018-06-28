@@ -11,7 +11,9 @@ let childRoutes =
         </Route>
         <Route path = "/quote" name = "Get A Quote" breadcrumbName = "Get A Quote" component = {Quote}/>
         <Route path = "/about" name = "About us" breadcrumbName = "About us" component = {About}/>
-        <route path = "/console" name = "Console" breadcrumbName = "Console" component = {Layout}/>
+        <Route path = "/console"  component = {Layout}>
+            <Route path = "login" component = { About }/>
+        </Route>
         <Route path="*" component={NotFound} />
     </Route>
 export default (childRoutes)
