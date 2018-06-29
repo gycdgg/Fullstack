@@ -1,18 +1,35 @@
-import { Form, Icon, Input, Button } from 'antd'
+import { Form, Icon, Input, Button, message } from 'antd'
 import styles from './styles'
+import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import React from 'react'
+import 'whatwg-fetch'
 const FormItem = Form.Item
-@Form.create()
 
+@Form.create()
+@withRouter
 class Login extends React.Component {
   static propTypes = {
+    router: PropTypes.object.isRequired,
     form: PropTypes.object.isRequired
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields( async(err, values) => {
       if (!err) {
+        let data = await fetch('/api/admin/login', {
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+          },
+          method: 'POST',
+          credentials: 'include',
+          body: JSON.stringify(values)
+        }).then(res => res.json())
+        if(data.message === 'Success') {
+          this.props.router.push('console')
+        } else {
+          message.error('登陆失败，密码错误')
+        }
         console.log('Received values of form: ', values)
       }
     })
