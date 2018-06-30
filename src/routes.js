@@ -6,21 +6,21 @@ import { NotFound } from './components/error_page'
 import 'whatwg-fetch'
 
 const checkAuth = (state, replace, next) => {
-  //replace({ pathname: '/login' })
-  // fetch('/api/admin/session', {
-  //   method: 'GET',
-  //   credentials: 'include'
-  // }).then(res => res.json()).then(res => {
-  //   console.log(res)
-  //   // if(res.message !== 'Success') {
-  //   //   replace({ pathname: '/login' })
-  //   //   next()
-  //   // }
-  // }).catch(err => {
-  //   console.log(err)
-  //   replace({ pathname: '/login' })
-  //   next()
-  // })
+  fetch('/api/admin/session', {
+    method: 'GET',
+    credentials: 'include'
+  }).then(res => res.json()).then(res => {
+    console.log(res)
+    if(res.message !== 'Success') {
+      replace({ pathname: '/login' })
+      next()
+    }
+  }).catch(err => {
+    console.log(err)
+    replace({ pathname: '/login' })
+    next()
+  })
+  next()
 }
 let childRoutes =
   <Route name = "home" breadcrumbName = "Home" path="/" component={ Wrapper }>
