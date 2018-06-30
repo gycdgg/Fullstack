@@ -17,7 +17,7 @@ class Login extends React.Component {
     e.preventDefault()
     this.props.form.validateFields( async(err, values) => {
       if (!err) {
-        let data = await fetch('/api/admin/login', {
+        let data = await fetch('/api/admin/session', {
           headers: {
             'Content-Type': 'application/json; charset=UTF-8'
           },
