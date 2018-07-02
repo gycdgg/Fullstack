@@ -1,7 +1,9 @@
 import Login from './login'
-import Layout from './Layout'
+import Layout from './layout'
+import ConsoleHome from './home/index.jsx'
 
 export {
   Login,
-  Layout
+  Layout,
+  ConsoleHome
 }

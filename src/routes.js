@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About } from './components'
-import { Login, Layout }from './components/console'
+import { Login, Layout, ConsoleHome }from './components/console'
 import { NotFound } from './components/error_page'
 import 'whatwg-fetch'
 
@@ -33,6 +33,8 @@ let childRoutes =
     <Route path = "/about" name = "About us" breadcrumbName = "About us" component = {About}/>
     <Route path = "/login" component = { Login }/>
     <Route path = "/console"  component = {Layout} onEnter = {checkAuth}>
+      <IndexRoute component={ ConsoleHome }/>
+      <Route  path = "home" name = "首页信息" breadcrumbName = "首页信息" component = { ConsoleHome }/>
     </Route>
     <Route path="*" component={NotFound} />
   </Route>
