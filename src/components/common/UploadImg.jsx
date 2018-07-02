@@ -1,6 +1,7 @@
 import React from 'react'
 import { Upload, Icon, Modal, Button } from 'antd'
 import PropTypes from 'prop-types'
+import 'whatwg-fetch'
 class UploadImg extends React.Component {
 
   static propTypes = {
@@ -17,7 +18,7 @@ class UploadImg extends React.Component {
   state = {
     previewVisible: false,
     previewImage: '',
-    fileList: [],
+    fileList: this.props.fileList,
   };
 
   handleCancel = () => this.setState({ previewVisible: false })
@@ -31,8 +32,16 @@ class UploadImg extends React.Component {
 
   handleChange = ({ fileList }) => this.setState({ fileList })
 
-  handleSubmit = () => {
+  handleSubmit = async() => {
     console.log(this.state.fileList)
+    // await fetch('/api/admin/imgs', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json; charset=UTF-8'
+    //   },
+    //   credentials: 'include',
+    //   body: JSON.stringify(values)
+    // })
   }
   render() {
     const { len } = this.props
@@ -47,7 +56,7 @@ class UploadImg extends React.Component {
       <div className="clearfix">
         <Upload
           withCredentials = { true }
-          action = "/api/admin/imgs"
+          action = "/api/admin/upload"
           listType = "picture-card"
           fileList = {fileList}
           onPreview = {this.handlePreview}
