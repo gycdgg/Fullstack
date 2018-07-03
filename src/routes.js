@@ -3,22 +3,14 @@ import { Route, IndexRoute } from 'react-router'
 import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About } from './components'
 import { Login, Layout, ConsoleHome }from './components/console'
 import { NotFound } from './components/error_page'
-import 'whatwg-fetch'
+import fetch from '$fetch'
 
 const checkAuth = (state, replace, next) => {
-  fetch('/api/admin/session', {
-    method: 'GET',
-    credentials: 'include'
-  }).then(res => res.json()).then(res => {
-    console.log(res)
+  fetch('/api/admin/session').then(res => {
     if(res.message !== 'Success') {
       replace({ pathname: '/login' })
       next()
     }
-  }).catch(err => {
-    console.log(err)
-    replace({ pathname: '/login' })
-    next()
   })
   next()
 }

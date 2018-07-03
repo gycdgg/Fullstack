@@ -3,7 +3,7 @@ import styles from './styles'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
 import React from 'react'
-import 'whatwg-fetch'
+import fetch from '$fetch'
 const FormItem = Form.Item
 
 @Form.create()
@@ -18,19 +18,14 @@ class Login extends React.Component {
     this.props.form.validateFields( async(err, values) => {
       if (!err) {
         let data = await fetch('/api/admin/session', {
-          headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
-          },
           method: 'POST',
-          credentials: 'include',
-          body: JSON.stringify(values)
-        }).then(res => res.json())
+          body: values
+        })
         if(data.message === 'Success') {
           this.props.router.push('console')
         } else {
           message.error('登陆失败，密码错误')
         }
-        console.log('Received values of form: ', values)
       }
     })
   }
