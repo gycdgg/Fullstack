@@ -1,7 +1,7 @@
 import React from 'react'
 import { Upload, Icon, Modal, Button, Spin, message } from 'antd'
 import PropTypes from 'prop-types'
-import 'whatwg-fetch'
+import fetch from '$fetch'
 
 class UploadImg extends React.Component {
 
@@ -24,8 +24,17 @@ class UploadImg extends React.Component {
     fileList: []
   };
   componentDidMount() {
-    fetch('/api/admin/pictures',{
-      method: 'GET'
+    fetch(`/api/admin/pictures?category=${this.props.category}`).then(res => {
+      let filterArr = [ 'uid', 'name', 'status', 'url' ]
+      let fileArr = res.data.map(v => {
+        let obj = {}
+        for(let i in v) {
+          if(filterArr.includes(i)) obj[i] = v[i]
+        }
+        return obj
+      })
+      console.log(fileArr, 'asdasdasddas')
+      this.setState({ fileList: fileArr })
     })
   }
   handleCancel = () => this.setState({ previewVisible: false })
@@ -54,12 +63,8 @@ class UploadImg extends React.Component {
     })
     fetch('/api/admin/pictures', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
-      },
-      credentials: 'include',
-      body: JSON.stringify(normailList)
-    }).then(res => res.json()).then(res => {
+      body: normailList
+    }).then(res => {
       this.setState({ loading: false })
       if(res.message === 'Success') {
         message.success('添加成功')
