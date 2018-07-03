@@ -11,6 +11,9 @@ const checkAuth = (state, replace, next) => {
       replace({ pathname: '/login' })
       next()
     }
+  }).catch(() => {
+    replace({ pathname: '/login' })
+    next()
   })
   next()
 }
