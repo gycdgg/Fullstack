@@ -2,7 +2,7 @@ import React from 'react'
 import { Upload, Icon, Modal, Button, Spin, message } from 'antd'
 import PropTypes from 'prop-types'
 import fetch from '$fetch'
-
+import styles from './styles'
 class UploadImg extends React.Component {
 
   static propTypes = {
@@ -26,7 +26,7 @@ class UploadImg extends React.Component {
   componentDidMount() {
     fetch(`/api/admin/pictures?category=${this.props.category}`).then(res => {
       let filterArr = [ 'uid', 'name', 'status', 'url' ]
-      let fileArr = res.data.map(v => {
+      let fileArr = res.data.rows.map(v => {
         let obj = {}
         for(let i in v) {
           if(filterArr.includes(i)) obj[i] = v[i]
@@ -63,7 +63,7 @@ class UploadImg extends React.Component {
     })
     fetch('/api/admin/pictures', {
       method: 'POST',
-      body: normailList
+      body: { fileList: normailList, category: this.props.category }
     }).then(res => {
       this.setState({ loading: false })
       if(res.message === 'Success') {
@@ -89,20 +89,22 @@ class UploadImg extends React.Component {
     return (
       <div className="clearfix">
       <Spin spinning={this.state.loading}>
-        <Upload
-          withCredentials = { true }
-          action = "/api/admin/upload"
-          listType = "picture-card"
-          fileList = {fileList}
-          onPreview = {this.handlePreview}
-          onChange = {this.handleChange}
-        >
-          {fileList.length >= len ? null : uploadButton}
-        </Upload>
+        <div className = {styles.upload}>
+          <Upload
+            withCredentials = { true }
+            action = "/api/admin/upload"
+            listType = "picture-card"
+            fileList = {fileList}
+            onPreview = {this.handlePreview}
+            onChange = {this.handleChange}
+          >
+            {fileList.length >= len ? null : uploadButton}
+          </Upload>
+        </div>
         <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
           <img alt="example" style={{ width: '100%' }} src={previewImage} />
         </Modal>
-        <Button onClick = {this.handleSubmit} type = "primaty" >{buttonWords}</Button>
+        <Button onClick = {this.handleSubmit} type = "primary" >{buttonWords}</Button>
       </Spin>
       </div>
     )
