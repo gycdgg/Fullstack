@@ -15,11 +15,11 @@ class ConsoleHome extends React.Component {
           <UploadImg len = {5}  category = "home_banner"/>
         </div>
       </div>
-      <hr/>
+      <hr className = {styles.home__hr}/>
       <div className = {styles.home__product}>
-        <div className = {styles.home__banner__header}>编辑product center</div>
+        <div className = {styles.home__banner__header}>编辑product center(只能编辑图片和标题)</div>
         <div className = {styles.home__banner__upload}>
-          <UploadTable category = "home_banner"/>
+          <UploadTable category = "home_banner" editAble = {[ 'title', 'url' ]}/>
         </div>
       </div>
       <div className = {styles.home__app}></div>
