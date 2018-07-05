@@ -24,7 +24,8 @@ class UploadTable extends React.Component {
   state = {
     list: [],
     targetItem: {},
-    visible: false
+    visible: false,
+    loading: false
   }
 
   componentDidMount() {
@@ -32,8 +33,9 @@ class UploadTable extends React.Component {
   }
 
   getPictures = () => {
+    this.setState({ loading: true })
     fetch(`/api/admin/pictures?category=${this.props.category}`).then(res => {
-      this.setState({ list: res.data.rows })
+      this.setState({ list: res.data.rows, loading: false })
     })
   }
 
@@ -44,26 +46,56 @@ class UploadTable extends React.Component {
     return e && e.fileList
   }
 
+  handleCreate = () => {
+    this.setState({ targetItem: { }, visible: true })
+  }
+
+  /**
+   *
+   * if(id) : update
+   * else: create
+   * @memberof UploadTable
+   */
   handleOk = (e) => {
     e.preventDefault()
     this.props.form.validateFields( async(err, values) => {
-      if(Object.prototype.toString.call(values.fileList) === '[object Array]') {
-        values.url = values.fileList[0]['url']
+      if(Array.isArray(values.fileList) && values.fileList[0] ) {
+        values.url = values.fileList[0]['url'] || values.fileList[0].response.url
         values.uid = values.fileList[0]['uid']
       }
       if (!err) {
-        fetch('/api/admin/pictures', {
-          method: 'PUT',
-          body: values
-        }).then(res => {
-          if(res.message === 'Success') {
-            message.success('编辑成功')
-            this.getPictures()
-            this.setState({ visible: false })
-          } else {
+        if(values.id === undefined) {
+          this.setState({ loading: true })
+          fetch('/api/admin/pictures', {
+            method: 'POST',
+            body: { fileList: values } 
+          }).then(res => {
+            if(res.message === 'Success') {
+              message.success('新建成功')
+              this.getPictures()
+              this.setState({ visible: false, loading: true })
+            } else {
+              message.error('新建失败')
+            }
+          }).catch(() => {
+            message.error('创建失败')
+          })
+        } else {
+          fetch('/api/admin/pictures', {
+            method: 'PUT',
+            body: values
+          }).then(res => {
+            if(res.message === 'Success') {
+              message.success('编辑成功')
+              this.getPictures()
+              this.setState({ visible: false, loading: true })
+            } else {
+              message.error('编辑失败')
+            }
+          }).catch(() => {
             message.error('编辑失败')
-          }
-        })
+          })
+        }
       }
     })
   }
@@ -86,8 +118,8 @@ class UploadTable extends React.Component {
     this.setState( { visible: false })
   }
   render() {
-    const { visible, targetItem } = this.state
-    const { editAble } = this.props
+    const { visible, targetItem, loading } = this.state
+    const { editAble, category } = this.props
     const { getFieldDecorator, getFieldValue } = this.props.form
     const defaultColumns = [{
       title: '标题',
@@ -122,6 +154,8 @@ class UploadTable extends React.Component {
     const columns = defaultColumns.filter(v => editAble.includes(v.dataIndex) || v.key === 'id')
     return (
       <div  className = {styles.uploadTable}>
+        <Spin spinning={loading}>
+        <Button type = "primary" onClick = {this.handleCreate}>新增</Button>
         <Table columns={columns} dataSource={this.state.list} pagination = {false}/>
         <Modal visible={visible} onCancel={this.handleCancel} title = "编辑" onOk = {this.handleOk} >
           <Form>
@@ -129,6 +163,14 @@ class UploadTable extends React.Component {
             {getFieldDecorator('id', {
               rules: [{ required: false }],
               initialValue: targetItem.id
+            })(
+              <span />
+            )}
+            </FormItem>
+            <FormItem>
+            {getFieldDecorator('category', {
+              rules: [{ required: false }],
+              initialValue: category
             })(
               <span />
             )}
@@ -159,17 +201,18 @@ class UploadTable extends React.Component {
             </FormItem> : null}
             {editAble.includes('url') ? <FormItem>{getFieldDecorator('fileList', {
               valuePropName: 'fileList',
-              initialValue: [{ url: targetItem.url, uid: targetItem.uid }],
+              initialValue: targetItem['id'] ? [{ url: targetItem.url, uid: targetItem.uid }] : [],
               getValueFromEvent: this.normFile,
             })(
             <Upload  action="/api/admin/upload" listType="picture-card">
-              {getFieldValue('fileList') === undefined || getFieldValue('fileList').length === 1 ? null : <Button>
+              {(getFieldValue('fileList') === undefined || getFieldValue('fileList').length === 1) && targetItem['id'] ? null : <Button>
                 <Icon type="upload" /> Click to upload
               </Button>}
             </Upload>
             )}</FormItem> : null }
           </Form>
         </Modal>
+        </Spin>
       </div>
     )
   }
