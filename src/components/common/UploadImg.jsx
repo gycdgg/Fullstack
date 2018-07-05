@@ -33,7 +33,6 @@ class UploadImg extends React.Component {
         }
         return obj
       })
-      console.log(fileArr, 'asdasdasddas')
       this.setState({ fileList: fileArr })
     })
   }
