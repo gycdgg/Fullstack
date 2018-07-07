@@ -1,4 +1,4 @@
-## Full Stack demo by React and Nodejs
+## Full Stack project by React and Nodejs
 
 > **FrontEnd: React + Redux + Antd + stylus + webpack**
 
