@@ -8,13 +8,13 @@ class Applications extends React.Component {
   }
 
   render() {
-    return <div className = {styles.app}>
-    <p className = {styles.app__content}>Our products are suitable for
+    return <div className = { styles.app }>
+    <p className = { styles.app__content }>Our products are suitable for
      global telecom solutions, 
      including Metropolitan area networks, 
      Data centers, FTTx, Broadband access, 
      CATV, Wireless networks, IPTV, GPON, EPON etc.. Where there is fiber optic solutions, there have KINSOM’s products.</p>
-    {imgArrs.map((v, i) => <img src = {v} key = {i}/>)}
+    { imgArrs.map((v, i) => <img key = { i } src = { v }/>) }
     </div>
   }
 }

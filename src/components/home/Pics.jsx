@@ -12,9 +12,9 @@ class Pics extends React.Component {
   }
 
   render() {
-    return <div className = {styles.pic}>
+    return <div className = { styles.pic }>
             {
-                imgsArr.map((v, i) => <div className = {styles.pic__item} key = {i} ><img src = {imgsArr[1]} key = {i}/><div className = {styles.button}>Learn more</div></div>)
+              imgsArr.map((v, i) => <div className = { styles.pic__item } key = { i } ><img key = { i } src = { imgsArr[1] }/><div className = { styles.button }>Learn more</div></div>)
             }
             
         </div>

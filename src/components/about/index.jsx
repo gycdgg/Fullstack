@@ -13,7 +13,7 @@ class About extends React.Component {
 
   render() {
     return <div>
-      <UploadImg len = {3} site = "home"/>
+      <UploadImg len = { 3 } site = "home"/>
     </div>
   }
 }

@@ -8,11 +8,11 @@ class Banner extends React.Component {
   }
 
   render() {
-    return <Carousel autoplay className = {styles.banner}>
-            <div><img src = {bgImg}/></div>
-            <div><img src = {bgImg2}/></div>
-            <div><img src = {bgImg}/></div>
-            <div><img src = {bgImg2}/></div>
+    return <Carousel autoplay className = { styles.banner }>
+            <div><img src = { bgImg }/></div>
+            <div><img src = { bgImg2 }/></div>
+            <div><img src = { bgImg }/></div>
+            <div><img src = { bgImg2 }/></div>
           </Carousel>
   }
 }

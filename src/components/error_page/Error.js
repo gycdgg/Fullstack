@@ -7,11 +7,11 @@ class Error extends Component {
     super(props)
   }
   render() {
-    return <div className={styles.bg}>
-      <div className={styles.bg__content}>
-        <img src={this.props.imgUrl} alt={this.altText} />
-        <p className={styles.bg__content__errorMsg}>{this.props.errorMsg}</p>
-        <Link to="/" className={styles.bg__content__link}>{this.props.btnText}</Link>
+    return <div className = { styles.bg }>
+      <div className = { styles.bg__content }>
+        <img alt = { this.altText } src = { this.props.imgUrl } />
+        <p className = { styles.bg__content__errorMsg }>{ this.props.errorMsg }</p>
+        <Link className = { styles.bg__content__link } to = "/">{ this.props.btnText }</Link>
       </div>
     </div>
   }

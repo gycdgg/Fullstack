@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 import Error from './Error'
 import { notfound } from '../../assets/img'
 class NotFound extends Component {
@@ -9,11 +8,11 @@ class NotFound extends Component {
 
   render() {
     return <Error
-            imgUrl={notfound}
-            altText="not found"
-            errorMsg="很抱歉，您访问的页面不在地球上..."
-            btnText="返回首页"
-        />
+        altText = "not found"
+        btnText = "返回首页"
+        errorMsg = "很抱歉，您访问的页面不在地球上..."
+        imgUrl = { notfound }
+           />
   }
 }
 export default NotFound
