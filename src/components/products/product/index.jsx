@@ -7,6 +7,10 @@ class Product extends React.Component {
   constructor(props) {
     super(props)
   }
+  state = {
+    desc: {},
+    Detail: {}
+  }
 
   componentDidMount() {
     fetch('/api/admin/products/1')
