@@ -138,14 +138,14 @@ class UploadTable extends React.Component {
       title: '图片',
       dataIndex: 'url',
       key: 'url',
-      render: (value) => <img src={value} style = {{ width: '50px' }}/>
+      render: (value) => <img src = { value } style = { { width: '50px' } }/>
     },
     { title: '操作',
       key: 'id',
       render: (id) => (
       <span>
-        <a onClick = { this.handleEditClick(id) } className="ant-dropdown-link">
-          编辑<Icon type="edit" />
+        <a className = "ant-dropdown-link" onClick = { this.handleEditClick(id) }>
+          编辑<Icon type = "edit" />
         </a>
       </span>
     ) }
@@ -153,63 +153,63 @@ class UploadTable extends React.Component {
     console.log('list', this.state.list, targetItem)
     const columns = defaultColumns.filter(v => editAble.includes(v.dataIndex) || v.key === 'id')
     return (
-      <div  className = {styles.uploadTable}>
-        <Spin spinning={loading}>
-        <Button type = "primary" onClick = {this.handleCreate}>新增</Button>
-        <Table columns={columns} dataSource={this.state.list} pagination = {false}/>
-        <Modal visible={visible} onCancel={this.handleCancel} title = "编辑" onOk = {this.handleOk} >
+      <div  className = { styles.uploadTable }>
+        <Spin spinning = { loading }>
+        <Button onClick = { this.handleCreate } type = "primary">新增</Button>
+        <Table columns = { columns } dataSource = { this.state.list } pagination = { false }/>
+        <Modal onCancel = { this.handleCancel } onOk = { this.handleOk } title = "编辑" visible = { visible } >
           <Form>
           <FormItem>
-            {getFieldDecorator('id', {
+            { getFieldDecorator('id', {
               rules: [{ required: false }],
               initialValue: targetItem.id
             })(
               <span />
-            )}
+            ) }
             </FormItem>
             <FormItem>
-            {getFieldDecorator('category', {
+            { getFieldDecorator('category', {
               rules: [{ required: false }],
               initialValue: category
             })(
               <span />
-            )}
+            ) }
             </FormItem>
-            {editAble.includes('title') ? <FormItem label = "标题">
-            {getFieldDecorator('title', {
+            { editAble.includes('title') ? <FormItem label = "标题">
+            { getFieldDecorator('title', {
               rules: [{ required: false }],
               initialValue: targetItem.title
             })(
               <Input />
-            )}
+            ) }
             </FormItem> : null }
-            {editAble.includes('desc') ?  <FormItem label = "描述">
-            {getFieldDecorator('desc', {
+            { editAble.includes('desc') ?  <FormItem label = "描述">
+            { getFieldDecorator('desc', {
               rules: [{ required: false }],
               initialValue: targetItem.desc
             })(
               <Input />
-            )}
-            </FormItem> : null}
-            {editAble.includes('name') ? <FormItem label = "名称">
-            {getFieldDecorator('name', {
+            ) }
+            </FormItem> : null }
+            { editAble.includes('name') ? <FormItem label = "名称">
+            { getFieldDecorator('name', {
               rules: [{ required: false }],
               initialValue: targetItem.name
             })(
               <Input />
-            )}
-            </FormItem> : null}
-            {editAble.includes('url') ? <FormItem>{getFieldDecorator('fileList', {
+            ) }
+            </FormItem> : null }
+            { editAble.includes('url') ? <FormItem>{ getFieldDecorator('fileList', {
               valuePropName: 'fileList',
               initialValue: targetItem['id'] ? [{ url: targetItem.url, uid: targetItem.uid }] : [],
               getValueFromEvent: this.normFile,
             })(
-            <Upload  action="/api/admin/upload" listType="picture-card">
-              {(getFieldValue('fileList') === undefined || getFieldValue('fileList').length === 1) && targetItem['id'] ? null : <Button>
-                <Icon type="upload" /> Click to upload
-              </Button>}
+            <Upload  action = "/api/admin/upload" listType = "picture-card">
+              { (getFieldValue('fileList') === undefined || getFieldValue('fileList').length === 1) && targetItem['id'] ? null : <Button>
+                <Icon type = "upload" /> Click to upload
+              </Button> }
             </Upload>
-            )}</FormItem> : null }
+            ) }</FormItem> : null }
           </Form>
         </Modal>
         </Spin>

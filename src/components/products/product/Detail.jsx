@@ -36,38 +36,38 @@ class Detail extends React.Component {
   }
 
   render() {
-    return <div className = {styles.detail}>
-      <div className = {styles.detail__features}>
-        <div className = {styles.title}>Features</div>
-        <ul className = {styles.list}>
-          {features.map((v, i) => <li key = {i}>{v}</li>)}
+    return <div className = { styles.detail }>
+      <div className = { styles.detail__features }>
+        <div className = { styles.title }>Features</div>
+        <ul className = { styles.list }>
+          { features.map((v, i) => <li key = { i }>{ v }</li>) }
         </ul>
       </div>
       <hr/>
-      <div className = {styles.detail__applications}>
-        <div className = {styles.title}>applications</div>
-        <ul className = {styles.list}>
-          {features.map((v, i) => <li key = {i}>{v}</li>)}
+      <div className = { styles.detail__applications }>
+        <div className = { styles.title }>applications</div>
+        <ul className = { styles.list }>
+          { features.map((v, i) => <li key = { i }>{ v }</li>) }
         </ul>
       </div>
       <hr/>
-      <div className = {styles.detail__package}>
-        <div className = {styles.title}>package</div>
-        <ul className = {styles.list}>
-          {features.map((v, i) => <li key = {i}>{v}</li>)}
+      <div className = { styles.detail__package }>
+        <div className = { styles.title }>package</div>
+        <ul className = { styles.list }>
+          { features.map((v, i) => <li key = { i }>{ v }</li>) }
         </ul>
       </div>
       <hr/>
-      <div className = {styles.detail__workshop}>
-        <div className = {styles.title}>The Production workshop show</div>
+      <div className = { styles.detail__workshop }>
+        <div className = { styles.title }>The Production workshop show</div>
         {
-          imgArr.map((v, i) => <img src = {v} key = {i}/>)
+          imgArr.map((v, i) => <img key = { i } src = { v }/>)
         }
       </div>
       <hr/>
-      <div className = {styles.detail__order}>
-        <div className = {styles.title}>Ordering Infomation</div>
-        <Table dataSource={dataSource} columns={columns} pagination = {false} bordered/>
+      <div className = { styles.detail__order }>
+        <div className = { styles.title }>Ordering Infomation</div>
+        <Table bordered columns = { columns } dataSource = { dataSource } pagination = { false }/>
       </div>      
     </div>
   }

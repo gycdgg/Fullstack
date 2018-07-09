@@ -81,29 +81,29 @@ class UploadImg extends React.Component {
     const { previewVisible, previewImage, fileList } = this.state
     const uploadButton = (
       <div>
-        <Icon type="plus" />
-        <div className="ant-upload-text">Upload</div>
+        <Icon type = "plus" />
+        <div className = "ant-upload-text">Upload</div>
       </div>
     )
     return (
-      <div className="clearfix">
-      <Spin spinning={this.state.loading}>
-        <div className = {styles.upload}>
+      <div className = "clearfix">
+      <Spin spinning = { this.state.loading }>
+        <div className = { styles.upload }>
           <Upload
-            withCredentials = { true }
-            action = "/api/admin/upload"
-            listType = "picture-card"
-            fileList = {fileList}
-            onPreview = {this.handlePreview}
-            onChange = {this.handleChange}
+              action = "/api/admin/upload"
+              fileList = { fileList }
+              listType = "picture-card"
+              onChange = { this.handleChange }
+              onPreview = { this.handlePreview }
+              withCredentials
           >
-            {fileList.length >= len ? null : uploadButton}
+            { fileList.length >= len ? null : uploadButton }
           </Upload>
         </div>
-        <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-          <img alt="example" style={{ width: '100%' }} src={previewImage} />
+        <Modal footer = { null } onCancel = { this.handleCancel } visible = { previewVisible }>
+          <img alt = "example" src = { previewImage } style = { { width: '100%' } } />
         </Modal>
-        <Button onClick = {this.handleSubmit} type = "primary" >{buttonWords}</Button>
+        <Button onClick = { this.handleSubmit } type = "primary" >{ buttonWords }</Button>
       </Spin>
       </div>
     )

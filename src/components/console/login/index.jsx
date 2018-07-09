@@ -32,25 +32,25 @@ class Login extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <div  className={styles.login}>
-        <Form onSubmit={this.handleSubmit} className = {styles.login__form}>
-        <h3 className = {styles.login__form__title}>欢迎来到控制中心</h3>
+      <div  className = { styles.login }>
+        <Form className = { styles.login__form } onSubmit = { this.handleSubmit }>
+        <h3 className = { styles.login__form__title }>欢迎来到控制中心</h3>
           <FormItem>
-            {getFieldDecorator('userName', {
+            { getFieldDecorator('userName', {
               rules: [{ required: true, message: 'Please input your username!' }],
             })(
-              <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
-            )}
+              <Input placeholder = "Username" prefix = { <Icon style = { { color: 'rgba(0,0,0,.25)' } } type = "user" /> } />
+            ) }
           </FormItem>
           <FormItem>
-            {getFieldDecorator('password', {
+            { getFieldDecorator('password', {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-            )}
+              <Input placeholder = "Password" prefix = { <Icon style = { { color: 'rgba(0,0,0,.25)' } } type = "lock" /> } type = "password" />
+            ) }
           </FormItem>
           <FormItem>
-            <Button type="primary" htmlType="submit" className={styles.login__form__submit}>
+            <Button className = { styles.login__form__submit } htmlType = "submit" type = "primary">
               Log in
             </Button>
           </FormItem>

@@ -23,7 +23,7 @@ class Product extends React.Component {
     })
   }
   render() {
-    return<div className = {styles.product}>
+    return<div className = { styles.product }>
       <Desc/>
       <hr/>
       <Detail/>

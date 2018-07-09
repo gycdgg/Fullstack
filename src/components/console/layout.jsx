@@ -31,21 +31,21 @@ class Layout extends React.Component {
     }
   }
   render() {
-    return <div className = {styles.container}>
-      <div className = {styles.container__header}>
+    return <div className = { styles.container }>
+      <div className = { styles.container__header }>
         <span>欢迎进入控制台</span>
-        <span className = {styles.container__header__button}>
-          <Button type = "primary" onClick = {this.handleClick}>退出</Button>
+        <span className = { styles.container__header__button }>
+          <Button onClick = { this.handleClick } type = "primary">退出</Button>
         </span>
       </div>
-      <div className = {styles.container__main}>
-        <div className = {styles.container__main__nav}><Sider/></div>
-        <div className = {styles.container__main__content}>
-          <div className = {styles.container__main__content__header}></div>
+      <div className = { styles.container__main }>
+        <div className = { styles.container__main__nav }><Sider/></div>
+        <div className = { styles.container__main__content }>
+          <div className = { styles.container__main__content__header }></div>
           { this.props.children }
         </div>
       </div>
-      <div className = {styles.container__footer}>All rights Reserved by Edmond Guan</div>
+      <div className = { styles.container__footer }>All rights Reserved by Edmond Guan</div>
     </div>
   }
 }

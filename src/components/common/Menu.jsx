@@ -26,11 +26,11 @@ class MenuList extends React.Component {
   naviRender = (navi) => {
     return navi.map((v, i) => {
       if(Array.isArray(v)) {
-        return <SubMenu key = {v + i} title = {v[0]}>
-          {this.naviRender(v.slice(1))}
+        return <SubMenu key = { v + i } title = { v[0] }>
+          { this.naviRender(v.slice(1)) }
         </SubMenu>
       } else {
-        return <Menu.Item key = {v + i} className = {styles.item}>{v}</Menu.Item>
+        return <Menu.Item className = { styles.item } key = { v + i }>{ v }</Menu.Item>
       }
     }
     )
@@ -39,21 +39,22 @@ class MenuList extends React.Component {
   render() {
     // get props from father component
     const { title, navi } = this.props
-    return <div className = {styles.menu}>
-      <div className = {styles.menu__container}>
-        <div className = {styles.menu__container__navi}>
-          <div className = { styles.menu__container__navi__title}>{title}</div>
+    return <div className = { styles.menu }>
+      <div className = { styles.menu__container }>
+        <div className = { styles.menu__container__navi }>
+          <div className = { styles.menu__container__navi__title }>{ title }</div>
           <Menu
-            className = {styles.menu}
-            onClick={this.handleClick}
-            defaultSelectedKeys={[ '5' ]}
-            defaultOpenKeys={[ 'sub1' ]}
-            mode="inline">
+              className = { styles.menu }
+              defaultOpenKeys = { [ 'sub1' ] }
+              defaultSelectedKeys = { [ '5' ] }
+              mode = "inline"
+              onClick = { this.handleClick }
+          >
             { this.naviRender(navi) }
           </Menu>
-          <div className = { styles.menu__container__navi__title}></div>
+          <div className = { styles.menu__container__navi__title }></div>
         </div>
-        <div className = {styles.menu__container__content}>
+        <div className = { styles.menu__container__content }>
           { this.props.children }
         </div>
       </div>
