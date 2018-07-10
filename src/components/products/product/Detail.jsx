@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles'
+import PropTypes from 'prop-types'
 import { product1 } from 'imgs'
 import { Table } from 'antd'
 const imgArr = new Array(3).fill(product1)
@@ -31,30 +32,44 @@ const columns = [{
 // these are mock data
 const features = [ 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module' ]
 class Detail extends React.Component {
+
+  static propTypes = {
+    product: PropTypes.object.isRequired
+  }
+
+  static defaultProps = {
+    product: {
+      features: [],
+      applications: [],
+      packages: []
+    }
+  }
+
   constructor(props) {
     super(props)
   }
 
   render() {
+    const { product } = this.props
     return <div className = { styles.detail }>
       <div className = { styles.detail__features }>
         <div className = { styles.title }>Features</div>
         <ul className = { styles.list }>
-          { features.map((v, i) => <li key = { i }>{ v }</li>) }
+          { product.features.map((v, i) => <li key = { i }>{ v.name }</li>) }
         </ul>
       </div>
       <hr/>
       <div className = { styles.detail__applications }>
         <div className = { styles.title }>applications</div>
         <ul className = { styles.list }>
-          { features.map((v, i) => <li key = { i }>{ v }</li>) }
+          { product.applications.map((v, i) => <li key = { i }>{ v.name }</li>) }
         </ul>
       </div>
       <hr/>
       <div className = { styles.detail__package }>
         <div className = { styles.title }>package</div>
         <ul className = { styles.list }>
-          { features.map((v, i) => <li key = { i }>{ v }</li>) }
+          { product.packages.map((v, i) => <li key = { i }>{ v.name }</li>) }
         </ul>
       </div>
       <hr/>
