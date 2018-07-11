@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './styles.styl'
 import { Form, Select, Input, Button, Col, Row, Icon, Upload } from 'antd'
 const FormItem = Form.Item
-const Option = Select.Option
+import fetch from '$fetch'
 @Form.create()
 class Quote extends React.Component {
   static propTypes = {
@@ -20,7 +20,19 @@ class Quote extends React.Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
+        fetch('/api/client/quote', {
+          method: 'POST',
+          body: values
+        }).then(res => {
+          if( res.message === 'Success') {
+            message.success('submit success')
+          } else {
+            message.error('submit failed')
+          }
+        }).catch(err => {
+          console.log(`submit quote error:${err}`)
+          message.error('submit failed')
+        })
       }
     })
   }
@@ -64,7 +76,7 @@ class Quote extends React.Component {
                   colon = { false }
                   label = "First Name"
               >
-              { getFieldDecorator('FirstName', {
+              { getFieldDecorator('first_name', {
                 rules: [{ required: true, message: 'Please input your first name!' }],
               })(
                 <Input />
@@ -76,16 +88,10 @@ class Quote extends React.Component {
                   colon = { false }
                   label = "Last Name"
               >
-              { getFieldDecorator('gender', {
+              { getFieldDecorator('last_name', {
                 rules: [{ required: true, message: 'Please select your last name!' }],
               })(
-                <Select
-                    onChange = { this.handleSelectChange }
-                    placeholder = "Select a option and change input text above"
-                >
-                  <Option value = "male">male</Option>
-                  <Option value = "female">female</Option>
-                </Select>
+                <Input/>
               ) }
             </FormItem>
             </Col>
@@ -109,13 +115,7 @@ class Quote extends React.Component {
                 label = "Company"
             >
             { getFieldDecorator('company')(
-              <Select
-                  onChange = { this.handleSelectChange }
-                  placeholder = "Select a option and change input text above"
-              >
-                <Option value = "male">male</Option>
-                <Option value = "female">female</Option>
-              </Select>
+              <Input />
             ) }
           </FormItem>
           </Col>
@@ -139,13 +139,7 @@ class Quote extends React.Component {
               label = "Phone Number"
           >
           { getFieldDecorator('phone')(
-            <Select
-                onChange = { this.handleSelectChange }
-                placeholder = "Select a option and change input text above"
-            >
-              <Option value = "male">male</Option>
-              <Option value = "female">female</Option>
-            </Select>
+            <Input />
           ) }
         </FormItem>
         </Col>
@@ -156,8 +150,8 @@ class Quote extends React.Component {
               colon = { false }
               label = "share the product details with us"
           >
-            { getFieldDecorator('detail', {
-              rules: [{ required: true, message: 'Please select your phone number!' }],
+            { getFieldDecorator('product_detail', {
+              rules: [{ required: true, message: 'Tell us your purpose' }],
             })(
               <Input.TextArea placeholder = "Tell us your purpose for the same application or share your describtions, quantities to the items that you need to apply for a sample if no product ID online"/>
             ) }
