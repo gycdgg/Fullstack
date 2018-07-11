@@ -33,7 +33,7 @@ const columns = [{
 }, {
   file: 'Files',
   dataIndex: 'files',
-  render: (value) => value.map((v, i) => <div key = { i }>{ v.name }<a  href = { v.url } download = { v.name }><Icon type = "download" /></a><a  href = { v.url } target = "_blank"><Icon type = "file" /></a></div>)
+  render: (value) => value.map((v, i) => <div key = { i }>{ v.name }<a  href = { v.url } download = { v.name }><Icon type = "download" /></a><a  href = { v.url } target = "_blank" rel = "noopener noreferrer"><Icon type = "file" /></a></div>)
 }]
 
 
@@ -52,7 +52,7 @@ class ConsoleQuote extends React.Component {
   }
   render() {
     return <div>
-    <Table columns = { columns } dataSource = { this.state.quoteList }/>,
+      <Table columns = { columns } dataSource = { this.state.quoteList }/>,
     </div>
   }
 }

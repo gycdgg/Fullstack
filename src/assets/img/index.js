@@ -21,19 +21,19 @@ numImg.num_01 = num_01
 numImg.num_02 = num_02
 numImg.num_03 = num_03
 export {
-    app1,
-    app2,
-    app3,
-    app4,
-    menuHover,
-    logoUrl,
-    bgImg,
-    bgImg2,
-    numImg,
-    icon1,
-    rope,
-    notfound,
-    serverError,
-    gatewayError,
-    product1
+  app1,
+  app2,
+  app3,
+  app4,
+  menuHover,
+  logoUrl,
+  bgImg,
+  bgImg2,
+  numImg,
+  icon1,
+  rope,
+  notfound,
+  serverError,
+  gatewayError,
+  product1
 }

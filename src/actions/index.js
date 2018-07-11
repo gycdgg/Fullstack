@@ -1,5 +1,5 @@
 import { testFunc } from './home'
 
 export {
-    testFunc
+  testFunc
 }

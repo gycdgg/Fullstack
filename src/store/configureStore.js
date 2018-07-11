@@ -11,6 +11,6 @@ const loggerMiddleware = createLogger()
 const middlewares = [ thunk, loggerMiddleware, routerMiddleware(browserHistory) ]
 //利用compose增强store
 const finalCreateStore = compose(applyMiddleware(...middlewares),
-    window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore)
+  window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore)
 
 export default finalCreateStore

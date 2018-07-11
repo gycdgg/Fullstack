@@ -7,11 +7,11 @@ import ProductList from './products/List'
 import Product from './products/product'
 import About from './about'
 export {
-    Wrapper,
-    Index,
-    ProductWrapper,
-    ProductList,
-    Quote,
-    Product,
-    About
+  Wrapper,
+  Index,
+  ProductWrapper,
+  ProductList,
+  Quote,
+  Product,
+  About
 }
