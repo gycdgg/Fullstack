@@ -29,8 +29,7 @@ const columns = [{
   dataIndex: 'address',
   key: 'address',
 }]
-// these are mock data
-const features = [ 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module', 'Hot-pluggable QSFP-DD form factor', 'channels full-duplex transceiver module' ]
+
 class Detail extends React.Component {
 
   static propTypes = {

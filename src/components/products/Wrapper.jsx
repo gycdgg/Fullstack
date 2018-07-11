@@ -27,8 +27,8 @@ class ProductWrapper extends React.Component {
   }
 
   render() {
-    return <Menu navi = {mockNavi} {...this.props} title = {title} >
-      {this.props.children}
+    return <Menu navi = { mockNavi } { ...this.props } title = { title } >
+      { this.props.children }
     </Menu>
   }
 }
