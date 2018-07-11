@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'antd'
+import { Table, Icon } from 'antd'
 import fetch from '$fetch'
 import moment from 'moment'
 
@@ -33,7 +33,7 @@ const columns = [{
 }, {
   file: 'Files',
   dataIndex: 'files',
-  render: (value) => value.map((v, i) => <div key = { i }><a  href = { v.url }>{ v.name }</a></div>)
+  render: (value) => value.map((v, i) => <div key = { i }>{ v.name }<a  href = { v.url } download = { v.name }><Icon type = "download" /></a><a  href = { v.url } target = "_blank"><Icon type = "file" /></a></div>)
 }]
 
 
