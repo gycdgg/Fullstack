@@ -17,7 +17,7 @@ class Sider extends React.Component {
           style = { { width: 256, height: '100%', padding: '10px 0' } }
       >
         <SubMenu key = "sub1" title = { <span><Icon type = "mail" /><span>主页</span></span> }>
-            <Menu.Item key = "1"><Link to = "console/home">主页</Link></Menu.Item>
+            <Menu.Item key = "1"><Link to = "/console/home">主页</Link></Menu.Item>
         </SubMenu>
         <SubMenu key = "sub2" title = { <span><Icon type = "appstore" /><span>Navigation Two</span></span> }>
           <Menu.Item key = "5">Option 5</Menu.Item>
@@ -26,6 +26,9 @@ class Sider extends React.Component {
             <Menu.Item key = "7">Option 7</Menu.Item>
             <Menu.Item key = "8">Option 8</Menu.Item>
           </SubMenu>
+        </SubMenu>
+        <SubMenu key = "sub3" title = { <span><Icon type = "setting" /><span>Quote</span></span> }>
+          <Menu.Item><Link to = "/console/quote">quote</Link></Menu.Item>
         </SubMenu>
         <SubMenu key = "sub4" title = { <span><Icon type = "setting" /><span>Navigation Three</span></span> }>
           <Menu.Item key = "9">Option 9</Menu.Item>

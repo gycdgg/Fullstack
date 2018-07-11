@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About } from './components'
-import { Login, Layout, ConsoleHome }from './components/console'
+import { Login, Layout, ConsoleHome, ConsoleQuote }from './components/console'
 import { NotFound } from './components/error_page'
 import fetch from '$fetch'
 
@@ -30,6 +30,7 @@ let childRoutes =
     <Route component = { Layout }  onEnter = { checkAuth } path = "/console">
       <IndexRoute component = { ConsoleHome }/>
       <Route  breadcrumbName = "首页信息" component = { ConsoleHome } name = "首页信息" path = "home"/>
+      <Route  breadcrumbName = "quote" component = { ConsoleQuote } name = "quote" path = "quote"/>
     </Route>
     <Route component = { NotFound } path = "*" />
   </Route>
