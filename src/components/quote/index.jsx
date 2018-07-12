@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.styl'
-import { Form, Input, Button, Col, Row, Icon, Upload } from 'antd'
+import { Form, Input, Button, Col, Row, Icon, Upload, message } from 'antd'
 const FormItem = Form.Item
 import fetch from '$fetch'
 @Form.create()
@@ -26,6 +26,16 @@ class Quote extends React.Component {
         }).then(res => {
           if( res.message === 'Success') {
             message.success('submit success')
+            this.props.form.setFieldsValue({
+              first_name: null,
+              last_name: null,
+              email: null,
+              company: null,
+              country: null,
+              phone: null,
+              product_detail: null,
+              upload: []
+            })
           } else {
             message.error('submit failed')
           }
