@@ -25,10 +25,15 @@ class Sider extends React.Component {
           <SubMenu key = "sub3" title = "Submenu">
             <Menu.Item key = "7">Option 7</Menu.Item>
             <Menu.Item key = "8">Option 8</Menu.Item>
-          </SubMenu>
+          </SubMenu>                                                                                                                
         </SubMenu>
         <SubMenu key = "sub3" title = { <span><Icon type = "setting" /><span>Quote</span></span> }>
           <Menu.Item><Link to = "/console/quote">quote</Link></Menu.Item>
+        </SubMenu>
+        <SubMenu key = "sub5" title = { <span><Icon type = "setting" /><span>Product</span></span> }>
+        <Menu.Item><Link to = "/console/products">product list </Link></Menu.Item>
+        <Menu.Item><Link to = "/console/products/create">create product</Link></Menu.Item>
+        <Menu.Item><Link to = "/console/products/edit/:id">edit product</Link></Menu.Item>
         </SubMenu>
         <SubMenu key = "sub4" title = { <span><Icon type = "setting" /><span>Navigation Three</span></span> }>
           <Menu.Item key = "9">Option 9</Menu.Item>
