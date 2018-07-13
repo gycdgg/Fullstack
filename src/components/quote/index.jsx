@@ -20,7 +20,7 @@ class Quote extends React.Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        fetch('/api/client/quote', {
+        fetch('/api/client/quotes', {
           method: 'POST',
           body: values
         }).then(res => {
