@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Upload, Button, Icon } from 'antd'
+import { Form, Upload, Button, Icon, message } from 'antd'
 import PropTypes from 'prop-types'
 
 const FormItem = Form.Item

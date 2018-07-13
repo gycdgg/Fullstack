@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles'
-import { TreeSelect, Form, Input, Upload, Icon, Button } from 'antd'
+import { TreeSelect, Form, Input, Button, message } from 'antd'
 import { DynamicFieldSet, Uploads } from '../../common'
+import fetch from '$fetch'
+
 const TreeNode = TreeSelect.TreeNode
 const FormItem = Form.Item
 const { TextArea } = Input
@@ -23,29 +25,29 @@ class CreateProduct extends React.Component {
     this.props.form.validateFields((err, values) => {
       console.log('1111', values)
       if (!err) {
-        // fetch('/api/client/quote', {
-        //   method: 'POST',
-        //   body: values
-        // }).then(res => {
-        //   if( res.message === 'Success') {
-        //     message.success('submit success')
-        //     this.props.form.setFieldsValue({
-        //       first_name: null,
-        //       last_name: null,
-        //       email: null,
-        //       company: null,
-        //       country: null,
-        //       phone: null,
-        //       product_detail: null,
-        //       upload: []
-        //     })
-        //   } else {
-        //     message.error('submit failed')
-        //   }
-        // }).catch(err => {
-        //   console.log(`submit quote error:${err}`)
-        //   message.error('submit failed')
-        // })
+        fetch('/api/admin/products', {
+          method: 'POST',
+          body: values
+        }).then(res => {
+          if( res.message === 'Success') {
+            // message.success('submit success')
+            // this.props.form.setFieldsValue({
+            //   first_name: null,
+            //   last_name: null,
+            //   email: null,
+            //   company: null,
+            //   country: null,
+            //   phone: null,
+            //   product_detail: null,
+            //   upload: []
+            // })
+          } else {
+            message.error('submit failed')
+          }
+        }).catch(err => {
+          console.log(`submit quote error:${err}`)
+          message.error('submit failed')
+        })
       }
     })
   }
