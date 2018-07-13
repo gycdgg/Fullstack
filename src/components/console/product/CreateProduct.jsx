@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles'
 import { TreeSelect, Form, Input, Upload, Icon, Button } from 'antd'
-import { DynamicFieldSet } from '../../common'
+import { DynamicFieldSet, Uploads } from '../../common'
 const TreeNode = TreeSelect.TreeNode
 const FormItem = Form.Item
 const { TextArea } = Input
@@ -48,10 +48,6 @@ class CreateProduct extends React.Component {
         // })
       }
     })
-  }
-  
-  onChange = (e) => {
-    console.log(e)
   }
   
   normFile = (e) => {
@@ -116,54 +112,12 @@ class CreateProduct extends React.Component {
           })(<TextArea/>)
         }
       </FormItem>
-      <FormItem
-          { ...formItemLayout }
-          label = "upload product picture"
-      >
-        { getFieldDecorator('product_pic', {
-          valuePropName: 'product_pic',
-          getValueFromEvent: this.normFile,
-        })(
-          <Upload action = "/api/admin/upload" onChange = { this.handleChange }>
-            <Button>
-              <Icon type = "upload" /> Click to upload
-            </Button>
-          </Upload>
-        ) }
-      </FormItem>
-      <FormItem
-          { ...formItemLayout }
-          label = "upload product pdf/doc"
-      >
-        { getFieldDecorator('product_pic', {
-          valuePropName: 'product_pic',
-          getValueFromEvent: this.normFile,
-        })(
-          <Upload action = "/api/admin/upload" onChange = { this.handleChange }>
-            <Button>
-              <Icon type = "upload" /> Click to upload
-            </Button>
-          </Upload>
-        ) }
-      </FormItem>
+      <Uploads formItemLayout = { formItemLayout } label = "upload product picture" value = "product_pic" { ...this.props }/>
+      <Uploads formItemLayout = { formItemLayout } label = "upload product doc/pdf" value = "product_pdf" { ...this.props }/>
       <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = "features" />
       <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = "applications" />
       <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = "packages" />
-      <FormItem
-          { ...formItemLayout }
-          label = "upload workshop show"
-      >
-        { getFieldDecorator('workshop_pdf', {
-          valuePropName: 'workshop_pdf',
-          getValueFromEvent: this.normFile,
-        })(
-          <Upload action = "/api/admin/upload" onChange = { this.handleChange }>
-            <Button>
-              <Icon type = "upload" /> Click to upload
-            </Button>
-          </Upload>
-        ) }
-      </FormItem>
+      <Uploads formItemLayout = { formItemLayout } label = "upload workshop picture" value = "workshop_pic" { ...this.props }/>      
       <FormItem
           label = "submit"
           { ...formItemLayout }

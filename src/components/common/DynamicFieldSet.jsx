@@ -3,17 +3,20 @@ import PropTypes from 'prop-types'
 import { Form, Input, Icon, Button } from 'antd'
 const FormItem = Form.Item
 
-let uuid = 1
 
 class DynamicFieldSet extends React.Component {
+
   static propTypes = {
-    required: PropTypes.bool.isRequired,
+    labelRequired: PropTypes.bool.isRequired,
+    inputRequired: PropTypes.bool.isRequired,
     form: PropTypes.object.isRequired,
     formItemLayout: PropTypes.object.isRequired,
     label: PropTypes.object.isRequired
   }
+
   static defaultProps = {
-    required: false,
+    inputRequired: false,
+    labelRequired: false,
     formItemLayout: {
       labelCol: {
         xs: { span: 24 },
@@ -25,49 +28,50 @@ class DynamicFieldSet extends React.Component {
       },
     }
   }
+
+  state = {
+    keys: [ 0 ]
+  }
+
   remove = (k) => {
-    const { form } = this.props
-    const keys = form.getFieldValue('keys')
+    const { keys } = this.state 
     if (keys.length === 1) {
       return
     }
 
-    form.setFieldsValue({
+    this.setState({
       keys: keys.filter(key => key !== k),
     })
   }
 
   add = () => {
-    const { form } = this.props
-    // can use data-binding to get
-    const keys = form.getFieldValue('keys')
-    const nextKeys = keys.concat(uuid)
-    uuid++
-    form.setFieldsValue({
+    const { keys } = this.state
+    const nextKeys = keys.concat(keys.length)
+    this.setState({
       keys: nextKeys,
     })
   }
 
   render() {
-    const { getFieldDecorator, getFieldValue } = this.props.form
-    const { formItemLayout, label, required } = this.props
+    const { getFieldDecorator } = this.props.form
+    const { formItemLayout, label, labelRequired, inputRequired } = this.props
     const formItemLayoutWithOutLabel = {
       wrapperCol: {
         xs: { span: 24, offset: 0 },
         sm: { span: 6, offset: 6 },
       },
     }
-    getFieldDecorator('keys', { initialValue: [ 0 ] })
-    const keys = getFieldValue('keys')
+    const { keys }  = this.state
     return <div> { keys.map((k, index) => 
         <FormItem
+            required = { labelRequired }
             { ...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel) }
             label = { index === 0 ? label : '' }
             key = { k }
         >
           { getFieldDecorator(`${label}[${k}]`, {
             rules: [{
-              required: required
+              required: inputRequired
             }],
           })(
             <Input placeholder = "please enter" style = { { width: '80%', marginRight: 8 } } />
@@ -83,7 +87,7 @@ class DynamicFieldSet extends React.Component {
         </FormItem>
       ) }
       <FormItem { ...formItemLayoutWithOutLabel }>
-          <Button type = "dashed" onClick = { this.add } style = { { width: '60%' } }>
+          <Button type = "dashed" onClick = { this.add } style = { { width: '70%' } }>
             <Icon type = "plus" /> Add { label }
           </Button>
         </FormItem>
