@@ -7,10 +7,13 @@ let uuid = 1
 
 class DynamicFieldSet extends React.Component {
   static propTypes = {
+    required: PropTypes.bool.isRequired,
     form: PropTypes.object.isRequired,
-    formItemLayout: PropTypes.object.isRequired
+    formItemLayout: PropTypes.object.isRequired,
+    label: PropTypes.object.isRequired
   }
   static defaultProps = {
+    required: false,
     formItemLayout: {
       labelCol: {
         xs: { span: 24 },
@@ -47,7 +50,7 @@ class DynamicFieldSet extends React.Component {
 
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form
-    const { formItemLayout, label } = this.props
+    const { formItemLayout, label, required } = this.props
     const formItemLayoutWithOutLabel = {
       wrapperCol: {
         xs: { span: 24, offset: 0 },
@@ -64,7 +67,7 @@ class DynamicFieldSet extends React.Component {
         >
           { getFieldDecorator(`${label}[${k}]`, {
             rules: [{
-              required: true
+              required: required
             }],
           })(
             <Input placeholder = "please enter" style = { { width: '80%', marginRight: 8 } } />
@@ -81,7 +84,7 @@ class DynamicFieldSet extends React.Component {
       ) }
       <FormItem { ...formItemLayoutWithOutLabel }>
           <Button type = "dashed" onClick = { this.add } style = { { width: '60%' } }>
-            <Icon type = "plus" /> Add field
+            <Icon type = "plus" /> Add { label }
           </Button>
         </FormItem>
       </div>
