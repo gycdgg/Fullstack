@@ -50,7 +50,7 @@ class ConsoleQuote extends React.Component {
   }
   render() {
     return <div>
-      <Table columns = { columns } dataSource = { this.state.quoteList }/>,
+      <Table columns = { columns } dataSource = { this.state.quoteList }/>
     </div>
   }
 }
