@@ -35,7 +35,7 @@ class UploadTable extends React.Component {
   getPictures = () => {
     this.setState({ loading: true })
     fetch(`/api/admin/pictures?category=${this.props.category}`).then(res => {
-      this.setState({ list: res.data.rows, loading: false })
+      this.setState({ list: res.rows, loading: false })
     })
   }
 
@@ -69,14 +69,10 @@ class UploadTable extends React.Component {
           fetch('/api/admin/pictures', {
             method: 'POST',
             body: { fileList: values } 
-          }).then(res => {
-            if(res.message === 'Success') {
-              message.success('新建成功')
-              this.getPictures()
-              this.setState({ visible: false, loading: true })
-            } else {
-              message.error('新建失败')
-            }
+          }).then(() => {
+            message.success('新建成功')
+            this.getPictures()
+            this.setState({ visible: false, loading: true })
           }).catch(() => {
             message.error('创建失败')
           })
@@ -84,14 +80,10 @@ class UploadTable extends React.Component {
           fetch('/api/admin/pictures', {
             method: 'PUT',
             body: values
-          }).then(res => {
-            if(res.message === 'Success') {
-              message.success('编辑成功')
-              this.getPictures()
-              this.setState({ visible: false, loading: true })
-            } else {
-              message.error('编辑失败')
-            }
+          }).then(() => {
+            message.success('编辑成功')
+            this.getPictures()
+            this.setState({ visible: false, loading: true })
           }).catch(() => {
             message.error('编辑失败')
           })

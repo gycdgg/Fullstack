@@ -28,9 +28,8 @@ class CreateProduct extends React.Component {
         fetch('/api/admin/products', {
           method: 'POST',
           body: values
-        }).then(res => {
-          if( res.message === 'Success') {
-            // message.success('submit success')
+        }).then(() => {
+          message.success('submit success')
             // this.props.form.setFieldsValue({
             //   first_name: null,
             //   last_name: null,
@@ -41,9 +40,6 @@ class CreateProduct extends React.Component {
             //   product_detail: null,
             //   upload: []
             // })
-          } else {
-            message.error('submit failed')
-          }
         }).catch(err => {
           console.log(`submit quote error:${err}`)
           message.error('submit failed')

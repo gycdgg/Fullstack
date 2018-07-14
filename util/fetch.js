@@ -21,7 +21,13 @@ const _fetch = (url, option = {}) => new Promise((resolve, reject) => {
         reject({ message: 'Failed' })
       }
     })
-    .then(res => resolve(res))
+    .then(res => {
+      if(res.message === 'Success') {
+        return resolve(res.data)
+      }else {
+        return reject({ message: 'Failed' })
+      }
+    })
     .catch(err => {
       console.log(`fetch ${url} data error:${err}`) 
       return reject(err) 

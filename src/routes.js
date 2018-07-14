@@ -9,12 +9,7 @@ import fetch from '$fetch'
  * check auth while enter console
  */
 const checkAuth = (state, replace, next) => {
-  fetch('/api/admin/session').then(res => {
-    if(res.message !== 'Success') {
-      replace({ pathname: '/login' })
-      next()
-    }
-  }).catch(() => {
+  fetch('/api/admin/session').catch(() => {
     replace({ pathname: '/login' })
     next()
   })

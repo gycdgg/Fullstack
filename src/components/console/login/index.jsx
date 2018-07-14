@@ -17,15 +17,11 @@ class Login extends React.Component {
     e.preventDefault()
     this.props.form.validateFields( async(err, values) => {
       if (!err) {
-        let data = await fetch('/api/admin/session', {
+        await fetch('/api/admin/session', {
           method: 'POST',
           body: values
         })
-        if(data.message === 'Success') {
-          this.props.router.push('console')
-        } else {
-          message.error('登陆失败，密码错误')
-        }
+        this.props.router.push('console')
       }
     })
   }

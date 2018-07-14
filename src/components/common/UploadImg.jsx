@@ -26,7 +26,7 @@ class UploadImg extends React.Component {
   componentDidMount() {
     fetch(`/api/admin/pictures?category=${this.props.category}`).then(res => {
       let filterArr = [ 'uid', 'name', 'status', 'url' ]
-      let fileArr = res.data.rows.map(v => {
+      let fileArr = res.rows.map(v => {
         let obj = {}
         for(let i in v) {
           if(filterArr.includes(i)) obj[i] = v[i]
@@ -63,13 +63,9 @@ class UploadImg extends React.Component {
     fetch('/api/admin/pictures', {
       method: 'POST',
       body: { fileList: normailList, category: this.props.category }
-    }).then(res => {
+    }).then(() => {
       this.setState({ loading: false })
-      if(res.message === 'Success') {
-        message.success('添加成功')
-      } else {
-        message.error('添加失败')
-      }
+      message.success('添加成功')
     }).catch((err) => {
       console.error(err)
       this.setState({ loading: false })

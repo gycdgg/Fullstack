@@ -43,11 +43,9 @@ class ConsoleQuote extends React.Component {
   }
   componentDidMount() {
     fetch('/api/admin/quotes').then(res => {
-      if(res.message === 'Success') {
-        this.setState({
-          quoteList: res.data.rows
-        })
-      }
+      this.setState({
+        quoteList: res.rows
+      })
     })
   }
   render() {

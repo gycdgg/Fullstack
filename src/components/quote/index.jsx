@@ -23,23 +23,20 @@ class Quote extends React.Component {
         fetch('/api/client/quotes', {
           method: 'POST',
           body: values
-        }).then(res => {
-          if( res.message === 'Success') {
-            message.success('submit success')
-            this.props.form.setFieldsValue({
-              first_name: null,
-              last_name: null,
-              email: null,
-              company: null,
-              country: null,
-              phone: null,
-              product_detail: null,
-              upload: []
-            })
-          } else {
-            message.error('submit failed')
-          }
-        }).catch(err => {
+        }).then(() => {
+          message.success('submit success')
+          this.props.form.setFieldsValue({
+            first_name: null,
+            last_name: null,
+            email: null,
+            company: null,
+            country: null,
+            phone: null,
+            product_detail: null,
+            upload: []
+          })
+        }
+        ).catch(err => {
           console.log(`submit quote error:${err}`)
           message.error('submit failed')
         })

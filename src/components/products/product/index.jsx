@@ -24,7 +24,7 @@ class Product extends React.Component {
     const { id } = this.props.params 
     fetch(`/api/admin/products/${id}`)
     .then(res => {
-      this.setState({ productDetail: res.data })
+      this.setState({ productDetail: res })
       console.log(res)
     })
     fetch('/api/admin/products')
