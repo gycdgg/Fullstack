@@ -45,6 +45,8 @@ class ConsoleProductList extends React.Component {
   handleDelete = (id) => {
     fetch(`/api/admin/products/${id}`, {
       method: 'DELETE'
+    }).then(() => {
+      message.success('delete success')
     })
   }
   render() {
