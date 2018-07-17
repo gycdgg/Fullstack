@@ -4,31 +4,24 @@ import { withRouter } from 'react-router'
 import Sider from './Sider'
 import { Button, message } from 'antd'
 import PropTypes from 'prop-types'
-import 'whatwg-fetch'
+import fetch from '$fetch'
 
 @withRouter
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    router: PropTypes.array.isRequired
+    router: PropTypes.object.isRequired
   }
 
-  handleClick = async() => {
-    try{
-      let data = await fetch('/api/admin/session', {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8'
-        },
-        method: 'DELETE',
-        credentials: 'include',
-      }).then(res => res.json())
-      if(data.message === 'Success') {
-        this.props.router.push('login')
-      }
-    } catch(err) {
+  handleClick = () => {
+    fetch('/api/admin/session', {
+      method: 'DELETE'
+    }).then(() => {
+      this.props.router.push('login')
+    }).catch(err => {
       console.log(err)
       message.error('登出失败')
-    }
+    })
   }
   render() {
     return <div className = { styles.container }>
