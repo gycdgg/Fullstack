@@ -101,6 +101,9 @@ const config = {
       ),
       '$fetch': path.resolve(
           __dirname, '../util/fetch.js'
+      ),
+      'util': path.resolve(
+        __dirname, '../util/index.js'
       )
     }
   }
