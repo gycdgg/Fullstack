@@ -4,22 +4,26 @@ import { connect } from 'react-redux'
 import styles from './styles'
 import { Divider, Pagination, Input } from 'antd'
 import Item from './Item'
-import fetch from '$fetch'
-import { getProduct, changePage } from '../../actions/product'
+import { getProduct, changePage, setQuery } from '../../actions/product'
+import { withRouter } from 'react-router'
 
 @connect(({ product }) => ({ product }), (dispatch, ownprops) => ({
   changePage: (...args) => dispatch(changePage(...args)),
   changeCategory: (...args) => dispatch(actions.changeCategory(...args)),
   getProduct: (...args) => dispatch(getProduct(...args)),
+  setQuery: (...args) => dispatch(setQuery(...args))
 }))
 
+@withRouter
 class List extends React.Component {
 
   static propTypes = {
     location: PropTypes.object.isRequired,
     getProduct: PropTypes.func.isRequired,
     changePage: PropTypes.func.isRequired,
-    product: PropTypes.object.isRequired
+    product: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
+    setQuery: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -27,10 +31,15 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getProduct()
+    const { location, getProduct, setQuery } = this.props
+    setQuery(location.query)
+    getProduct()
   }
 
   onPageSizeChange = (e) => {
+    const { category } = this.props.product
+    let url = `/products?page=${e}${category ? `&category=${category}` : ''}`
+    this.props.router.push(url)
     this.props.changePage(e)
     this.props.getProduct()
   }
@@ -51,7 +60,7 @@ class List extends React.Component {
       <Pagination 
           showQuickJumper 
           defaultCurrent = { 1 } 
-          current = { current }
+          current = { +current }
           pageSize = { 10 }
           total = { total }
           onChange = { this.onPageSizeChange }

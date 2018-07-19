@@ -5,6 +5,7 @@ import fetch from '$fetch'
 const CHANGE_TAB = 'CHANGE_TAB'
 const CHANGE_PAGE = 'CHANGE_PAGE'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
+const SET_QUERY = 'SET_QUERY'
 
 const getProduct = () => (dispatch, getState) => {
   const { product } = getState()
@@ -18,10 +19,17 @@ const changePage = (pageId) => (dispatch) => dispatch({ type: CHANGE_PAGE, paylo
 
 // const changeCategory = (category) => ()
 
+const setQuery = (query) => (dispatch) => dispatch({ type: SET_QUERY, payload: {
+  page: query.page,
+  category: query.category
+} })
+
 export  {
   FETCH_SUCCESS,
   CHANGE_TAB,
   CHANGE_PAGE,
+  SET_QUERY,
   getProduct,
-  changePage
+  changePage,
+  setQuery
 }
