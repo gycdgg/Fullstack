@@ -1,17 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import styles from './styles'
 import { Divider, Pagination, Input } from 'antd'
 import Item from './Item'
 import { getProduct, changePage, setQuery } from '../../actions/product'
-import { withRouter } from 'react-router'
 
-@connect(({ product }) => ({ product }), (dispatch, ownprops) => ({
-  changePage: (...args) => dispatch(changePage(...args)),
-  changeCategory: (...args) => dispatch(actions.changeCategory(...args)),
-  getProduct: (...args) => dispatch(getProduct(...args)),
-  setQuery: (...args) => dispatch(setQuery(...args))
+@connect(({ product }) => ({ product }), (dispatch) => ({
+  changePage: (...args) => { 
+    dispatch(changePage(...args))
+    dispatch(getProduct())
+  },
+  changeCategory: (...args) => { 
+    dispatch(actions.changeCategory(...args))
+    dispatch(getProduct())
+  },
+  getProduct: () => dispatch(getProduct()),
+  setQuery: (...args) => { 
+    dispatch(setQuery(...args))
+    dispatch(getProduct())
+  }
 }))
 
 @withRouter
@@ -31,9 +40,8 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    const { location, getProduct, setQuery } = this.props
+    const { location, setQuery } = this.props
     setQuery(location.query)
-    getProduct()
   }
 
   onPageSizeChange = (e) => {
@@ -41,7 +49,6 @@ class List extends React.Component {
     let url = `/products?page=${e}${category ? `&category=${category}` : ''}`
     this.props.router.push(url)
     this.props.changePage(e)
-    this.props.getProduct()
   }
 
   render() {
