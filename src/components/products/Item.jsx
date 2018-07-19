@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './styles'
 import { Card } from 'antd'
 import { product1 } from 'imgs'
+
 class Item extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,

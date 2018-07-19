@@ -5,54 +5,39 @@ import styles from './styles'
 import { Divider, Pagination, Input } from 'antd'
 import Item from './Item'
 import fetch from '$fetch'
+import { getProduct, changePage } from '../../actions/product'
 
 @connect(({ product }) => ({ product }), (dispatch, ownprops) => ({
-  changePage: (...args) => dispatch(actions.changePage(...args)),
-  changeCategory: (...args) => dispatch(actions.changeCategory(...args))
+  changePage: (...args) => dispatch(changePage(...args)),
+  changeCategory: (...args) => dispatch(actions.changeCategory(...args)),
+  getProduct: (...args) => dispatch(getProduct(...args)),
 }))
 
 class List extends React.Component {
 
   static propTypes = {
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
+    getProduct: PropTypes.func.isRequired,
+    changePage: PropTypes.func.isRequired,
+    product: PropTypes.object.isRequired
   }
 
   constructor(props) {
     super(props)
-    this.limit = 10
-    console.log('this.props.location', this.props.location)
-    this.state = {
-      amount: 0,
-      category: this.props.location.query.category,
-      productList: [],
-      page: +this.props.location.query.page || 1
-    }
   }
 
   componentDidMount() {
-    this.getProductList()
+    this.props.getProduct()
   }
 
   onPageSizeChange = (e) => {
-    console.log(e)
-  }
-  /**
-   * transfer limit offset and category to backend
-   */
-  getProductList = () => {
-    let { page, category } = this.state
-    let offset = (page - 1) * (this.limit)
-    fetch(`/api/client/products?limit=${this.limit}&offset=${offset}&category=${category}`).then((res) =>
-      this.setState({
-        amount: res.count,
-        productList: res.rows
-      })
-    )
+    this.props.changePage(e)
+    this.props.getProduct()
   }
 
   render() {
     console.log('this.props', this.props)
-    const { page: current,  amount: total } = this.state
+    const { page: current,  amount: total, productList } = this.props.product
     return <div className = { styles.list }>
       <div className = { styles.list__header }>list header</div>
       <Divider className = { styles.divider }/>
@@ -61,7 +46,7 @@ class List extends React.Component {
       </div>
       <Divider dashed className = { styles.divider }/>
       <div className = { styles.list__content }>
-        { this.state.productList.map((v, i) => <Item title = { v.name } content = { v.summary } key = { i }/>) }
+        { productList.map((v, i) => <Item title = { v.name } content = { v.summary } key = { i }/>) }
       </div>
       <Pagination 
           showQuickJumper 
