@@ -46,6 +46,7 @@ class List extends React.Component {
 
   onPageSizeChange = (e) => {
     const { category } = this.props.product
+    document.body.scrollTop = document.documentElement.scrollTop = 0
     let url = `/products?page=${e}${category ? `&category=${category}` : ''}`
     this.props.router.push(url)
     this.props.changePage(e)

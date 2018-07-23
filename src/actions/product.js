@@ -19,8 +19,10 @@ const changePage = (pageId) => (dispatch) => dispatch({ type: CHANGE_PAGE, paylo
 
 // const changeCategory = (category) => ()
 
-const setQuery = (query) => (dispatch) => dispatch({ type: SET_QUERY, payload: {
+const setQuery = (query) => (dispatch) => query.page ? dispatch({ type: SET_QUERY, payload: {
   page: query.page,
+  category: query.category
+} }) : dispatch({ type: SET_QUERY, payload: {
   category: query.category
 } })
 

@@ -2,7 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Menu } from 'antd'
 import styles from './styles.styl'
+import { connect } from 'react-redux'
+import { getProduct, changePage, setQuery } from '../../actions/product'
 const SubMenu = Menu.SubMenu
+const subArr = [ 'SFP Transceivers', 'SFP+ Transceivers', 'XFP Transceivers', '25G/40G/100G Transceivers',  ]
+@connect(({ product }) => ({ product }), (dispatch) => ({
+  changePage: (...args) => { 
+    dispatch(changePage(...args))
+    dispatch(getProduct())
+  },
+  changeCategory: (...args) => { 
+    dispatch(actions.changeCategory(...args))
+    dispatch(getProduct())
+  },
+  getProduct: () => dispatch(getProduct()),
+  setQuery: (...args) => { 
+    dispatch(setQuery(...args))
+    dispatch(getProduct())
+  }
+}))
 
 class MenuList extends React.Component {
   static propTypes = {
@@ -15,10 +33,25 @@ class MenuList extends React.Component {
     super(props)
   }
 
+  state = {
+    openKeys: []
+  }
+
   handleClick = (e) => {
     console.log('click ', e)
   }
 
+  handleOpenChange = (e) => {
+    let account = 1
+    if(subArr.includes(e.slice(-1)[0])) {
+      account = 2
+    }
+    this.setState({
+      openKeys: e.slice(-account)
+    })
+    console.log('open', e.slice(-account), e)
+  }
+  
   /**
    * @argument: navi is a array
    * map navi and render it logically
@@ -26,7 +59,7 @@ class MenuList extends React.Component {
   naviRender = (navi) => {
     return navi.map((v, i) => {
       if(Array.isArray(v)) {
-        return <SubMenu key = { v + i } title = { v[0] }>
+        return <SubMenu key = { v[0] } title = { v[0] }>
           { this.naviRender(v.slice(1)) }
         </SubMenu>
       } else {
@@ -38,6 +71,7 @@ class MenuList extends React.Component {
 
   render() {
     // get props from father component
+    console.log('11111111111111', this.state.openKeys)
     const { title, navi } = this.props
     return <div className = { styles.menu }>
       <div className = { styles.menu__container }>
@@ -47,8 +81,10 @@ class MenuList extends React.Component {
               className = { styles.menu }
               defaultOpenKeys = { [ 'sub1' ] }
               defaultSelectedKeys = { [ '5' ] }
+              openKeys = { this.state.openKeys }
               mode = "inline"
               onClick = { this.handleClick }
+              onOpenChange = { this.handleOpenChange }
           >
             { this.naviRender(navi) }
           </Menu>
