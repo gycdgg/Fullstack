@@ -2,11 +2,14 @@ import fetch from '$fetch'
 /**
  * action type
  */
-const CHANGE_TAB = 'CHANGE_TAB'
+const CHANGE_CATEGORY = 'CHANGE_CATEGORY'
 const CHANGE_PAGE = 'CHANGE_PAGE'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
 const SET_QUERY = 'SET_QUERY'
 
+/**
+ * action creator
+ */
 const getProduct = () => (dispatch, getState) => {
   const { product } = getState()
   const categoryParams = `${product.category ? '&category=' + product.category : '' }`
@@ -17,7 +20,13 @@ const getProduct = () => (dispatch, getState) => {
 
 const changePage = (pageId) => (dispatch) => dispatch({ type: CHANGE_PAGE, payload: { page: pageId } })
 
-// const changeCategory = (category) => ()
+const changeCategory = (category) => (dispatch) => dispatch({
+  type: CHANGE_CATEGORY,
+  payload: {
+    page: 1,
+    category
+  }
+})
 
 const setQuery = (query) => (dispatch) => query.page ? dispatch({ type: SET_QUERY, payload: {
   page: query.page,
@@ -26,12 +35,14 @@ const setQuery = (query) => (dispatch) => query.page ? dispatch({ type: SET_QUER
   category: query.category
 } })
 
+
 export  {
   FETCH_SUCCESS,
-  CHANGE_TAB,
+  CHANGE_CATEGORY,
   CHANGE_PAGE,
   SET_QUERY,
   getProduct,
   changePage,
+  changeCategory,
   setQuery
 }

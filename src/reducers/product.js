@@ -1,5 +1,5 @@
 import initialState from '../store/initState'
-import {  CHANGE_TAB, CHANGE_PAGE, FETCH_SUCCESS, SET_QUERY } from '../actions/product'
+import { CHANGE_PAGE, FETCH_SUCCESS, SET_QUERY, CHANGE_CATEGORY } from '../actions/product'
 
 export default function product(state = initialState.product, action) {
   switch(action.type) {
@@ -8,6 +8,8 @@ export default function product(state = initialState.product, action) {
   case CHANGE_PAGE:
     return Object.assign({}, state, action.payload)
   case SET_QUERY:
+    return Object.assign({}, state, action.payload)
+  case CHANGE_CATEGORY:
     return Object.assign({}, state, action.payload)
   default: return state
   }
