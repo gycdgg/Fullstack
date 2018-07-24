@@ -6,7 +6,8 @@ import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { getProduct, changePage, setQuery, changeCategory } from '../../actions/product'
 const SubMenu = Menu.SubMenu
-const subArr = [ 'SFP Transceivers', 'SFP+ Transceivers', 'XFP Transceivers', '25G/40G/100G Transceivers',  ]
+const subArr = [ 'SFP Transceivers', 'SFP+ Transceivers', 'XFP Transceivers', '25G/40G/100G Transceivers' ]
+
 @connect(({ product }) => ({ product }), (dispatch) => ({
   changePage: (...args) => { 
     dispatch(changePage(...args))

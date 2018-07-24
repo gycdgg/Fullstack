@@ -6,6 +6,7 @@ const CHANGE_CATEGORY = 'CHANGE_CATEGORY'
 const CHANGE_PAGE = 'CHANGE_PAGE'
 const FETCH_SUCCESS = 'FETCH_SUCCESS'
 const SET_QUERY = 'SET_QUERY'
+const GET_PRODUCT_CATEGORY = 'GET_PRODUCT_CATEGORY'
 
 /**
  * action creator
@@ -35,6 +36,11 @@ const setQuery = (query) => (dispatch) => query.page ? dispatch({ type: SET_QUER
   category: query.category
 } })
 
+const getCategory = () => (dispatch) => {
+  return fetch('/api/client/category').then(res => {
+    dispatch({ type: GET_PRODUCT_CATEGORY, payload: { categoryArr: res } })
+  })
+}
 
 export  {
   FETCH_SUCCESS,
@@ -44,5 +50,6 @@ export  {
   getProduct,
   changePage,
   changeCategory,
-  setQuery
+  setQuery,
+  getCategory
 }

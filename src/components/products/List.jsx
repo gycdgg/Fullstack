@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import styles from './styles'
-import { Divider, Pagination, Input } from 'antd'
+import { Divider, Pagination, Input, TreeSelect } from 'antd'
 import Item from './Item'
 import { getProduct, changePage, setQuery } from '../../actions/product'
+const TreeNode = TreeSelect.TreeNode
 
 @connect(({ product }) => ({ product }), (dispatch) => ({
   changePage: (...args) => { 
@@ -53,13 +54,31 @@ class List extends React.Component {
   }
 
   render() {
-    console.log('this.props', this.props)
     const { page: current,  amount: total, productList } = this.props.product
     return <div className = { styles.list }>
-      <div className = { styles.list__header }>list header</div>
+      <div className = { styles.list__header }>
+        <Input onChange = { (e) => this.handleInputChange(e) } placeholder = "input product name which you want to search"/>
+      </div>
       <Divider className = { styles.divider }/>
       <div className = { styles.list__search }>
-        <Input onChange = { (e) => this.handleInputChange(e) } placeholder = "input product name which you want to search"/>
+      <TreeSelect
+          showSearch
+          style = { { width: 300 } }
+          dropdownStyle = { { maxHeight: 400, overflow: 'auto' } }
+          placeholder = "Please select" 
+          allowClear
+          treeDefaultExpandAll
+          onChange = { this.onChange }
+      >
+          <TreeNode value = "xWDM & OADM" title = "xWDM & OADM" key = "0-1"></TreeNode>
+          <TreeNode value = "Optical Transceivers" title = "Optical Transceivers" key = "random2" disabled  >
+            <TreeNode value = "SFP Transceivers" title = "SFP Transceivers" key = "random3" />
+            <TreeNode value = "SFP+ Transceivers" title = "SFP+ Transceivers" key = "random4" />
+            <TreeNode value = "XFP Transceivers" title = "XFP Transceivers" key = "random5" />
+            <TreeNode value = "25G/40G/100G Transceivers" title = "25G/40G/100G Transceivers" key = "random6" />
+          </TreeNode>
+          <TreeNode value = "Active Optical Cables" title = "Active Optical Cables" key = "0-1"></TreeNode>
+        </TreeSelect>
       </div>
       <Divider dashed className = { styles.divider }/>
       <div className = { styles.list__content }>

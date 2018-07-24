@@ -4,6 +4,7 @@ export default {
     productList: [],
     amount: 0,
     category: null,
-    limit: 10
+    limit: 10,
+    categoryArr: []
   }
 }
