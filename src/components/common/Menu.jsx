@@ -8,7 +8,7 @@ import { getProduct, changePage, setQuery, changeCategory } from '../../actions/
 const SubMenu = Menu.SubMenu
 const subArr = [ 'SFP Transceivers', 'SFP+ Transceivers', 'XFP Transceivers', '25G/40G/100G Transceivers' ]
 
-@connect(({ product }) => ({ product }), (dispatch) => ({
+@connect( product => product, (dispatch) => ({
   changePage: (...args) => { 
     dispatch(changePage(...args))
     dispatch(getProduct())
@@ -78,9 +78,8 @@ class MenuList extends React.Component {
   }
 
   render() {
-    const { title, navi, product } = this.props
+    const { title, product } = this.props
     let openKeys = subArr.includes(product.category) ? [ 'Optical Transceivers', product.category ] : [ product.category ]
-    console.log(openKeys, '222222222222222222222222', )
     return <div className = { styles.menu }>
       <div className = { styles.menu__container }>
         <div className = { styles.menu__container__navi }>
@@ -94,7 +93,7 @@ class MenuList extends React.Component {
               onClick = { this.handleClick }
               onOpenChange = { this.handleOpenChange }
           >
-            { this.naviRender(navi) }
+            { this.naviRender(product.categoryArr) }
           </Menu>
           <div className = { styles.menu__container__navi__title }></div>
         </div>

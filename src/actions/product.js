@@ -47,6 +47,7 @@ export  {
   CHANGE_CATEGORY,
   CHANGE_PAGE,
   SET_QUERY,
+  GET_PRODUCT_CATEGORY,
   getProduct,
   changePage,
   changeCategory,

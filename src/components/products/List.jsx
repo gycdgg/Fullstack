@@ -5,16 +5,16 @@ import { withRouter } from 'react-router'
 import styles from './styles'
 import { Divider, Pagination, Input, TreeSelect } from 'antd'
 import Item from './Item'
-import { getProduct, changePage, setQuery } from '../../actions/product'
+import { getProduct, changePage, setQuery, changeCategory } from '../../actions/product'
 const TreeNode = TreeSelect.TreeNode
 
-@connect(({ product }) => ({ product }), (dispatch) => ({
+@connect(( product ) => ( product ), (dispatch) => ({
   changePage: (...args) => { 
     dispatch(changePage(...args))
     dispatch(getProduct())
   },
   changeCategory: (...args) => { 
-    dispatch(actions.changeCategory(...args))
+    dispatch(changeCategory(...args))
     dispatch(getProduct())
   },
   getProduct: () => dispatch(getProduct()),
@@ -33,7 +33,8 @@ class List extends React.Component {
     changePage: PropTypes.func.isRequired,
     product: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
-    setQuery: PropTypes.func.isRequired
+    setQuery: PropTypes.func.isRequired,
+    changeCategory: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -53,8 +54,19 @@ class List extends React.Component {
     this.props.changePage(e)
   }
 
+  selectRender = (categoryArr) => {
+    return categoryArr.map(v => {
+      if(Array.isArray(v)) {
+        return <TreeNode value = { v[0] } title = { v[0] } key = { v[0] }>{ this.selectRender(v.slice(1)) }</TreeNode>
+      }else{
+        return <TreeNode value = { v } title = { v } key = { v }></TreeNode>
+      }
+    })
+  }
+  
+
   render() {
-    const { page: current,  amount: total, productList } = this.props.product
+    const { page: current,  amount: total, productList, categoryArr, category } = this.props.product
     return <div className = { styles.list }>
       <div className = { styles.list__header }>
         <Input onChange = { (e) => this.handleInputChange(e) } placeholder = "input product name which you want to search"/>
@@ -62,22 +74,14 @@ class List extends React.Component {
       <Divider className = { styles.divider }/>
       <div className = { styles.list__search }>
       <TreeSelect
-          showSearch
           style = { { width: 300 } }
           dropdownStyle = { { maxHeight: 400, overflow: 'auto' } }
           placeholder = "Please select" 
           allowClear
-          treeDefaultExpandAll
-          onChange = { this.onChange }
+          value = { category }
+          onChange = { e => this.props.changeCategory(e) }
       >
-          <TreeNode value = "xWDM & OADM" title = "xWDM & OADM" key = "0-1"></TreeNode>
-          <TreeNode value = "Optical Transceivers" title = "Optical Transceivers" key = "random2" disabled  >
-            <TreeNode value = "SFP Transceivers" title = "SFP Transceivers" key = "random3" />
-            <TreeNode value = "SFP+ Transceivers" title = "SFP+ Transceivers" key = "random4" />
-            <TreeNode value = "XFP Transceivers" title = "XFP Transceivers" key = "random5" />
-            <TreeNode value = "25G/40G/100G Transceivers" title = "25G/40G/100G Transceivers" key = "random6" />
-          </TreeNode>
-          <TreeNode value = "Active Optical Cables" title = "Active Optical Cables" key = "0-1"></TreeNode>
+        { this.selectRender(categoryArr) }
         </TreeSelect>
       </div>
       <Divider dashed className = { styles.divider }/>

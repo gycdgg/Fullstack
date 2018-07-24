@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import { Icon, Breadcrumb } from 'antd'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 import Header from './Header'
 import Footer from './Footer'
 import 'antd/dist/antd.less'
 import styles from './styles.styl'
 import PropTypes from 'prop-types'
-import fetch from '$fetch'
-
+import { getCategory } from '../../actions/product'
+@connect(( product ) => ( product ), (dispatch) => ({
+  getCategory: () => dispatch(getCategory())
+}))
 class Wrapper extends Component {
 
   static propTypes = {
     routes: PropTypes.array.isRequired,
     location: PropTypes.object.isRequired,
     children: PropTypes.element.isRequired,
+    getCategory: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -21,7 +25,7 @@ class Wrapper extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/client/category')
+    this.props.getCategory()
   }
   itemRender = (route, params, routes, paths) => {
     const last = routes.indexOf(route) === routes.length - 1
