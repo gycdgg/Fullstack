@@ -87,7 +87,6 @@ class MenuList extends React.Component {
           <Menu
               className = { styles.menu }
               defaultOpenKeys = { [ 'sub1' ] }
-              defaultSelectedKeys = { [ '5' ] }
               openKeys = { openKeys }
               mode = "inline"
               onClick = { this.handleClick }

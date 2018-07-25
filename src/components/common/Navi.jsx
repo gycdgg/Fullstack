@@ -7,10 +7,6 @@ import styles from './styles.styl'
 class Navi extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      style: {},
-      show: false
-    }
     this.data = [
       'aaaaaaaaaaaa',
       'bbbbbbbbbb',
@@ -23,23 +19,10 @@ class Navi extends React.Component {
       'cccccccccccc'
     ]
   }
-
-  handleEnter = (e) => {
-    e.stopPropagation()
-    this.setState({
-      style: {
-        backgroundColor: 'red'
-      },
-      show: true
-    })
-  }
   handleClick = () => {
     this.props.router.push('products')
   }
-  handleLeave = (e) => {
-    e.stopPropagation()
-    this.setState({ style: {}, show: false })
-  }
+
   render() {
     const { content } = this.props
     return <div
@@ -48,16 +31,10 @@ class Navi extends React.Component {
         onMouseEnter = { this.handleEnter }
         onMouseLeave = { this.handleLeave }
            >
-      <div className = { styles.navi__content } style = { this.state.style }>{ content }</div>
-      { this.state.show
-        ? <div className = { styles.navi__hidden }>
-            { this
-              .data
-              .map((v, i) => {
-                return <div key = { i }>{ v }</div>
-              }) }
+      <div className = { styles.navi__content }>{ content }</div>
+      <div className = { styles.navi__hidden }>
+            { this.data.map((v, i) => <div key = { i }>{ v }</div>) }
           </div>
-        : null }
     </div>
   }
 }
