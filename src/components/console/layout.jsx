@@ -23,6 +23,7 @@ class Layout extends React.Component {
       message.error('登出失败')
     })
   }
+  
   render() {
     return <div className = { styles.container }>
       <div className = { styles.container__header }>
