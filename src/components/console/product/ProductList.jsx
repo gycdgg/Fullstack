@@ -6,7 +6,10 @@ import moment from 'moment'
 class ConsoleProductList extends React.Component {
 
   state = {
-    productList: []
+    productList: [],
+    limit: 10,
+    offset: 0,
+    total: 0
   }
 
   componentDidMount() {
@@ -15,7 +18,7 @@ class ConsoleProductList extends React.Component {
         v.key = v.id
         return v
       })
-      this.setState({ productList: res.rows })
+      this.setState({ productList: res.rows, total: res.count })
     })
   }
 
@@ -29,7 +32,14 @@ class ConsoleProductList extends React.Component {
       message.success('delete success')
     })
   }
+
+  handlePageSizeChange = (e) => {
+    this.setState({
+      offset: (e - 1) * 10
+    })
+  }
   render() {
+    const { limit, offset, productList, total } = this.state
     const columns = [
       { title: 'Product Name', dataIndex: 'name' }, 
       { title: 'Category', dataIndex: 'category' }, 
@@ -56,7 +66,13 @@ class ConsoleProductList extends React.Component {
       }
     ]
     return <div>
-      <Table columns = { columns } dataSource = { this.state.productList }/>
+      <Table columns = { columns } dataSource = { productList.slice(offset, limit + offset) } pagination = { {
+        current: this.state.offset / 10 + 1, 
+        pageSize: 10,
+        total: total,
+        onChange: this.handlePageSizeChange,
+      } }
+      />
     </div>
   }
 }
