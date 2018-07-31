@@ -4,18 +4,19 @@
 
 > **BackEnd: Node + mysql + redis + sequelize + jwt**
 
-### 项目介绍
+### Introduction
 企业站前后端，后台系统的路由为/console
 
-### 项目运行
-DEV 环境
+### start project
+DEV env
 1. npm i
 2. npm run dll
 3. npm run dev
 4. npm run build
 
 ### cookbook
-代码风格，没有对错，只是个人习惯
+personal cookbook
+
 #### 组件声明
 全面使用es6的class规则.从上到下的顺序依次是
 * class
