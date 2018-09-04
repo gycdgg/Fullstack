@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About } from './components'
+import { Wrapper, Index, ProductWrapper, ProductList, Quote, Product, About, Quality } from './components'
 import { Login, Layout, ConsoleHome, ConsoleQuote, ConsoleProductList, ConsoleCreateProduct }from './components/console'
 import { NotFound } from './components/error_page'
 import fetch from '$fetch'
@@ -25,6 +25,7 @@ let childRoutes =
     </Route>
     <Route breadcrumbName = "Get A Quote" component = { Quote } name = "Get A Quote" path = "/quote"/>
     <Route breadcrumbName = "About us" component = { About } name = "About us" path = "/about-us"/>
+    <Route breadcrumbName = "Quality Control" component = { Quality } name = "Quality Control" path = "/quality-control"/>
     <Route component = { Login } path = "/login"/>
     <Route component = { Layout }  onEnter = { checkAuth } path = "/console">
       <IndexRoute component = { ConsoleHome }/>
