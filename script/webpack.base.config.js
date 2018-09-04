@@ -86,6 +86,9 @@ const config = {
       ),
       'util': path.resolve(
         __dirname, '../util/index.js'
+      ),
+      '@': path.resolve(
+        __dirname, '../'
       )
     }
   }

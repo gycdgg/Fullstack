@@ -1,0 +1,32 @@
+.container
+  margin-top: 20px
+  &__top
+    &__left
+      display: inline-block
+      width: 50%
+    &__right
+      display: inline-block
+      width: 50%
+      vertical-align: top
+      img
+        width: 100%
+        margin-top: 80px
+  &__why
+    >h2
+      margin: 20px auto
+      text-align: center
+    &__content
+      display: flex
+      flex-wrap: wrap
+      .item
+        margin-bottom: 40px
+        flex: 0 0 25%
+        display: flex
+        img
+          vertical-align: top
+          width: 64px
+          height: 64px
+        &__content
+          padding: 0 10px
+          >h3
+            color: $hoverColor

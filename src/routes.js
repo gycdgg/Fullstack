@@ -24,7 +24,7 @@ let childRoutes =
       <Route breadcrumbName = "Product" component = { Product } name = "Product" path = ":id"/>
     </Route>
     <Route breadcrumbName = "Get A Quote" component = { Quote } name = "Get A Quote" path = "/quote"/>
-    <Route breadcrumbName = "About us" component = { About } name = "About us" path = "/about"/>
+    <Route breadcrumbName = "About us" component = { About } name = "About us" path = "/about-us"/>
     <Route component = { Login } path = "/login"/>
     <Route component = { Layout }  onEnter = { checkAuth } path = "/console">
       <IndexRoute component = { ConsoleHome }/>
