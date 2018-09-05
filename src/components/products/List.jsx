@@ -66,25 +66,8 @@ class List extends React.Component {
   
 
   render() {
-    const { page: current,  amount: total, productList, categoryArr, category } = this.props.product
+    const { page: current,  amount: total, productList } = this.props.product
     return <div className = { styles.list }>
-      <div className = { styles.list__header }>
-        <Input onChange = { (e) => this.handleInputChange(e) } placeholder = "input product name which you want to search"/>
-      </div>
-      <Divider className = { styles.divider }/>
-      <div className = { styles.list__search }>
-      <TreeSelect
-          style = { { width: 300 } }
-          dropdownStyle = { { maxHeight: 400, overflow: 'auto' } }
-          placeholder = "Please select" 
-          allowClear
-          value = { category }
-          onChange = { e => this.props.changeCategory(e) }
-      >
-        { this.selectRender(categoryArr) }
-        </TreeSelect>
-      </div>
-      <Divider dashed className = { styles.divider }/>
       <div className = { styles.list__content }>
         { productList.map((v, i) => <Item title = { v.name } content = { v.summary } key = { i }/>) }
       </div>

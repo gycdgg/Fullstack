@@ -4,16 +4,19 @@ import styles from './styles'
 import { TreeSelect, Form, Input, Button, message } from 'antd'
 import { DynamicFieldSet, Uploads } from '../../common'
 import fetch from '$fetch'
-
+import { connect } from 'react-redux'
 const TreeNode = TreeSelect.TreeNode
 const FormItem = Form.Item
 const { TextArea } = Input
 
+
 @Form.create()
+@connect(({ product }) => ({ categoryArr: product.categoryArr }))
 class CreateProduct extends React.Component {
   
   static propTypes = {
-    form: PropTypes.object.isRequired
+    form: PropTypes.object.isRequired,
+    categoryArr: PropTypes.array.isRequired
   }
 
   state = {
@@ -23,6 +26,12 @@ class CreateProduct extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
+      values.category_id = +values.category.split('-')[0]
+      values.subcategory_id = +values.category.split('-')[1]
+      values.category = values.category.split('-')[2]
+      values.product_pic = values.product_pic || []
+      values.product_pdf = values.product_pdf || []
+      values.workshop_pic = values.workshop_pic || []
       console.log('1111', values)
       if (!err) {
         fetch('/api/admin/products', {
@@ -67,6 +76,7 @@ class CreateProduct extends React.Component {
         sm: { span: 6 },
       },
     }
+    const { categoryArr } = this.props
     const { getFieldDecorator } = this.props.form
     return <Form  className = { styles.create } onSubmit = { this.handleSubmit }>
       <FormItem label =  "category" { ...formItemLayout }>
@@ -83,14 +93,9 @@ class CreateProduct extends React.Component {
               treeDefaultExpandAll
               onChange = { this.onChange }
           >
-          <TreeNode value = "xWDM & OADM" title = "xWDM & OADM" key = "0-1"></TreeNode>
-          <TreeNode value = "Optical Transceivers" title = "Optical Transceivers" key = "random2" disabled  >
-            <TreeNode value = "SFP Transceivers" title = "SFP Transceivers" key = "random3" />
-            <TreeNode value = "SFP+ Transceivers" title = "SFP+ Transceivers" key = "random4" />
-            <TreeNode value = "XFP Transceivers" title = "XFP Transceivers" key = "random5" />
-            <TreeNode value = "25G/40G/100G Transceivers" title = "25G/40G/100G Transceivers" key = "random6" />
-          </TreeNode>
-          <TreeNode value = "Active Optical Cables" title = "Active Optical Cables" key = "0-1"></TreeNode>
+            { categoryArr.map((v, i) => <TreeNode value = { '' + v.id } title = { v.name } key = { i } disabled>
+             { v.subcategorys.map((_v, _i) => <TreeNode value = { `${v.id}-${_v.id}-${_v.name}` } title = { _v.name } key = { `${i}-${_i}` }></TreeNode>) }
+            </TreeNode>) }
         </TreeSelect>)
         }
       </FormItem>
@@ -112,9 +117,9 @@ class CreateProduct extends React.Component {
       </FormItem>
       <Uploads formItemLayout = { formItemLayout } label = "upload product picture" value = "product_pic" { ...this.props }/>
       <Uploads formItemLayout = { formItemLayout } label = "upload product doc/pdf" value = "product_pdf" { ...this.props }/>
-      <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = "features" />
-      <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = "applications" />
-      <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = "packages" />
+      <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = { 'features' } />
+      <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = { 'applications' } />
+      <DynamicFieldSet { ...this.props } formItemLayout = { formItemLayout } label = { 'packages' } />
       <Uploads formItemLayout = { formItemLayout } label = "upload workshop picture" value = "workshop_pic" { ...this.props }/>      
       <FormItem
           label = "submit"

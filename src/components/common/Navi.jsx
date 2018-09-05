@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Menu, Dropdown, Button } from 'antd'
+import { Dropdown } from 'antd'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -21,7 +21,7 @@ class Navi extends React.Component {
     this.props.router.push('products')
   }
   
-  itemRender = (item) => item.map(v => Array.isArray(v) ? <ul key = { v }><p>{ v[0] }</p> { this.itemRender(v.slice(1)) }</ul> : <li key = { v }>{ v }</li>)
+  itemRender = (item) => item.map(v => <ul key = { v.id }><p>{ v.name }</p> { v.subcategorys && v.subcategorys.map(sub => <li key = { sub.id }>{ sub.name }</li>) } </ul>)
 
   get menu() {
     const { categoryArr } = this.props

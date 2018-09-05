@@ -47,39 +47,24 @@ class MenuList extends React.Component {
   }
 
   handleOpenChange = (e) => {
-    // let account = 1
-    // if(subArr.includes(e.slice(-1)[0])) {
-    //   account = 2
-    // }
-    // this.setState({
-    //   openKeys: e.slice(-account)
-    // })
+    console.log(e)
     const category = e.slice(-1)[0]
     let url = `/products?page=${1}${category ? '&category=' + category : ''}`
     this.props.router.push(url)
-    this.props.changeCategory(e.slice(-1)[0])
+    this.props.changeCategory(e[1])
   }
   
   /**
    * @argument: navi is a array
    * map navi and render it logically
    */
-  naviRender = (navi) => {
-    return navi.map((v) => {
-      if(Array.isArray(v)) {
-        return <SubMenu key = { v[0] } title = { v[0] }>
-          { this.naviRender(v.slice(1)) }
-        </SubMenu>
-      } else {
-        return <Menu.Item className = { styles.item } key = { v }>{ v }</Menu.Item>
-      }
-    }
-    )
-  }
+  naviRender = (navi) => navi.map((v, i) => <SubMenu key = { i } title = { v.name }>
+    { v.subcategorys.map((_v, _i) => <Menu.Item className = { styles.item } key = { _i }>{ _v.name }</Menu.Item>) }
+  </SubMenu>)
 
   render() {
     const { title, product } = this.props
-    let openKeys = subArr.includes(product.category) ? [ 'Optical Transceivers', product.category ] : [ product.category ]
+    let openKeys = [ product.category ]
     return <div className = { styles.menu }>
       <div className = { styles.menu__container }>
         <div className = { styles.menu__container__navi }>
