@@ -4,9 +4,18 @@ import styles from './styles'
 import Desc from './Desc'
 import Detail from './Detail'
 import fetch from '$fetch'
+import { connect } from 'react-redux'
+import { setQuery } from '../../../actions/product'
+@connect(( product ) => ( product ), (dispatch) => ({
+  setQuery: (...args) => { 
+    dispatch(setQuery(...args))
+  }
+}))
 class Product extends React.Component {
   static propTypes = {
-    params: PropTypes.object.isRequired
+    params: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    setQuery: PropTypes.func.isRequired
   }
   constructor(props) {
     super(props)
@@ -21,6 +30,8 @@ class Product extends React.Component {
   }
 
   componentDidMount() {
+    const { location, setQuery } = this.props
+    setQuery(location.query)
     const { id } = this.props.params 
     fetch(`/api/admin/products/${id}`)
     .then(res => {

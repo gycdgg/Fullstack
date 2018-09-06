@@ -3,6 +3,7 @@ import styles from './styles'
 import PropTypes from 'prop-types'
 import { product1 } from 'imgs'
 import { Table } from 'antd'
+
 const imgArr = new Array(3).fill(product1)
 const dataSource = [{
   key: '1',
@@ -29,7 +30,6 @@ const columns = [{
   dataIndex: 'address',
   key: 'address',
 }]
-
 class Detail extends React.Component {
 
   static propTypes = {

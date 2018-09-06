@@ -28,7 +28,6 @@ class MenuList extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
-    navi: PropTypes.array.isRequired,
     routes: PropTypes.array.isRequired,
     product: PropTypes.object.isRequired,
     changeCategory: PropTypes.func.isRequired,
@@ -43,36 +42,41 @@ class MenuList extends React.Component {
   }
 
   handleClick = (e) => {
-    console.log('click ', e)
+    console.log('click ', e.keyPath)
+    const [ subcategory, category ] = e.keyPath
+    let url = `/products?page=1&category=${category}&subcategory=${subcategory}`
+    this.props.router.push(url)
+    this.props.changeCategory(e.keyPath)
   }
 
   handleOpenChange = (e) => {
-    console.log(e)
-    const category = e.slice(-1)[0]
+    console.log('222222222222222222222222222', e)
+    const  category = e.slice(-1)[0]
     let url = `/products?page=${1}${category ? '&category=' + category : ''}`
     this.props.router.push(url)
-    this.props.changeCategory(e[1])
+    this.props.changeCategory(e.slice(-1))
   }
   
   /**
    * @argument: navi is a array
    * map navi and render it logically
    */
-  naviRender = (navi) => navi.map((v, i) => <SubMenu key = { i } title = { v.name }>
-    { v.subcategorys.map((_v, _i) => <Menu.Item className = { styles.item } key = { _i }>{ _v.name }</Menu.Item>) }
+  naviRender = (navi) => navi.map((v) => <SubMenu key = { v.id } title = { v.name }>
+    { v.subcategorys.map((_v) => <Menu.Item className = { styles.item } key = { _v.id }>{ _v.name }</Menu.Item>) }
   </SubMenu>)
 
   render() {
     const { title, product } = this.props
-    let openKeys = [ product.category ]
+    console.log('111111111111111', product.category)
+    const subcategory = product.category && product.category.length === 2 ? product.category[0] : ''
     return <div className = { styles.menu }>
       <div className = { styles.menu__container }>
         <div className = { styles.menu__container__navi }>
           <div className = { styles.menu__container__navi__title }>{ title }</div>
           <Menu
+              selectedKeys = { [ subcategory ] }
               className = { styles.menu }
-              defaultOpenKeys = { [ 'sub1' ] }
-              openKeys = { openKeys }
+              openKeys = { product.category && product.category.slice(-1) || [] }
               mode = "inline"
               onClick = { this.handleClick }
               onOpenChange = { this.handleOpenChange }

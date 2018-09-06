@@ -64,12 +64,11 @@ class List extends React.Component {
     })
   }
   
-
   render() {
     const { page: current,  amount: total, productList } = this.props.product
     return <div className = { styles.list }>
       <div className = { styles.list__content }>
-        { productList.map((v, i) => <Item title = { v.name } content = { v.summary } key = { i }/>) }
+        { productList.map((v) => <Item title = { v.name } content = { v.summary } key = { v.id } id = { v.id } />) }
       </div>
       <Pagination 
           showQuickJumper 
