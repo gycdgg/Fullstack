@@ -5,6 +5,7 @@ import { Card } from 'antd'
 import { product1 } from 'imgs'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+
 @withRouter
 @connect(product => (product))
 class Item extends React.Component {
@@ -15,10 +16,13 @@ class Item extends React.Component {
     id: PropTypes.number.isRequired,
     router: PropTypes.object.isRequired
   }
+
   constructor(props) {
     super(props)
   }
 
+
+  component
   handleItemClick = () => {
     const { id } = this.props
     this.props.router.push(`products/${id}${window.location.search}`)
